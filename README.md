@@ -12,6 +12,6 @@ npm install
 |-----|-------|
 |app.js | main server application |
 |package.json | project definition|
-|views|templates folder|
+|templates|templates folder|
 |static|static files folder|
 
