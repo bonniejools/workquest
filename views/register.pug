@@ -1,38 +1,19 @@
-html
-  head
-    title WorkQuest - Jonny Balls
-    link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600',rel='stylesheet',type='text/css')
-    link(href='css/normalize.css', rel='stylesheet')
-    link(href='css/skeleton.css', rel='stylesheet')
-    link(href='css/workquest.css', rel='stylesheet')
-    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+extends base.pug
 
-    script(src='https://code.jquery.com/jquery-3.2.0.min.js')
-    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js')
+block content
+  h2 Register
+  .six.columns
+    form(action='/singup' method='post')
+      .row
+        input.u-full-width(type='email', placeholder='email@email.com',name='mail')
+      .row
+        input.u-full-width(type='email', placeholder='email@email.com',name='mail2')
+      .row
+        input.u-full-width(type='text', placeholder='John',name='name')
+      .row
+        input.u-full-width(type='password', placeholder='password',name='pass')
+      .row
+        input.u-full-width(type='password', placeholder='password',name='pass2')
+      .row
+        input.u-full-width.button-primary(type='submit')
 
-  body
-    #nav
-      .container
-        #logo WorkQuest
-        .nav-right
-          #nav-stats
-            span.username Jonny the Destroyer
-            span.level 17
-            span.levelname Ascended one
-    
-    br
-    br
-    .container
-      form(action='/singup' method='post')
-        .row
-          input.u-full-width(type='email', placeholder='email@email.com',name='mail')
-        .row
-          input.u-full-width(type='email', placeholder='email@email.com',name='mail2')
-        .row
-          input.u-full-width(type='text', placeholder='John',name='name')
-        .row
-          input.u-full-width(type='password', placeholder='password',name='pass')
-        .row
-          input.u-full-width(type='password', placeholder='password',name='pass2')
-        .row
-          input.u-full-width(type='submit')

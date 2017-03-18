@@ -10,18 +10,18 @@ block content
         .xp-progress-text 45 / 100xp
 
       .eight.columns
-        h3 Jonny Balls
+        h3=user.name
           span.level Level 1 Peasant
         #stats
           .stat
             img(src='/assets/Item__40.png')
-            span 7
+            span=user.gold
           .stat
             img(src='/assets/Item__05.png')
-            span 15
+            span=user.attack
           .stat
             img(src='/assets/Item__25.png')
-            span 8
+            span=user.armour
     .six.columns
       table.u-full-width
         thead

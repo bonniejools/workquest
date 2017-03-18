@@ -105,9 +105,17 @@ app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
         console.log(sesh.user)
-        res.render('index',{user:sesh.user})
+        res.render('profile',{user:sesh.user})
     })
 })
+
+app.get('/manage', (req, res)=>{
+    User.find(function(err, users) {
+        console.log(users);
+        res.render('manage', {users: users});
+    });
+});
+
 //User managment
 function login(req, user, callback)
 {

@@ -1,0 +1,41 @@
+extends base.pug
+
+block content
+  .six.columns
+    h3 Players
+    table.u-full-width
+      thead
+        tr
+          th Name
+          th Level
+          th XP
+      tbody
+        each user in users
+          tr
+            td=user.name
+            td Level 9 God
+            td 12323
+  .six.columns
+    h3 New Task
+    form(action='/singup' method='post')
+      .row
+        label Task Name
+        input.u-full-width(type='email', name='task_name')
+      .row
+        .six.columns
+          label Number of hours
+          input.u-full-width(type='number', name='num_hours')
+        .six.columns
+          label Priority
+          span.priority-level
+            input(type='radio', name='priority')
+            span Low
+          span.priority-level
+            input(type='radio', name='priority' checked='checked')
+            span Normal
+          span.priority-level
+            input(type='radio', name='priority')
+            span High
+      .row
+        input.u-full-width.button-primary(type='submit')
+
