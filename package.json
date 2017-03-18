@@ -1,0 +1,24 @@
+{
+  "name": "workquest",
+  "version": "1.0.0",
+  "description": "Productivity booster",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonniejools/workquest.git"
+  },
+  "author": "Jonny, Sio, Pedro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bonniejools/workquest/issues"
+  },
+  "homepage": "https://github.com/bonniejools/workquest#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mocha": "^3.2.0",
+    "mongodb": "^2.2.25"
+  }
+}
