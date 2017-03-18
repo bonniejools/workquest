@@ -7,7 +7,7 @@ For dependencies
 npm install 
 ```
 
-##Paths
+## Paths
 
 |Path|Description|
 |-----|-------|
