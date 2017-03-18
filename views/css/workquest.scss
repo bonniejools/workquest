@@ -10,6 +10,8 @@ $nav-height: 5em;
 $primary-color: #674172;
 $primary-color: #674172;
 $flat-green: #66CC99;
+$flat-darkgreen: #26A65B;
+$tasklist-color: #ECF0F1;
 
 #nav {
     height: $nav-height;
@@ -42,6 +44,23 @@ $flat-green: #66CC99;
         width: 100%;
     }
 
+    .xp-progress-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #xp-progress {
+        width: 100%;
+        height: 0.7em;
+        background-color: #BDC3C7;
+
+        .xp-current-progress {
+            height: 0.7em;
+            background-color: $flat-darkgreen;
+            width: 30%;
+        }
+    }
+
     .level {
         margin-left: 0.3em;
         font-size: 0.6em;
@@ -72,7 +91,6 @@ $flat-green: #66CC99;
 
 }
 
-$tasklist-color: #ECF0F1;
 .tasklists {
     margin-top: 4em;
     width: 80%;

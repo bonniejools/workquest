@@ -18,6 +18,17 @@
 
 .user-stats img {
   width: 100%; }
+.user-stats .xp-progress-text {
+  width: 100%;
+  text-align: center; }
+.user-stats #xp-progress {
+  width: 100%;
+  height: 0.7em;
+  background-color: #BDC3C7; }
+  .user-stats #xp-progress .xp-current-progress {
+    height: 0.7em;
+    background-color: #26A65B;
+    width: 30%; }
 .user-stats .level {
   margin-left: 0.3em;
   font-size: 0.6em;
