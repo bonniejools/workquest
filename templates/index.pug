@@ -1,9 +1,15 @@
 html
   head
-    title Hello
+    title WorkQuest - Jonny Balls
+    link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600',rel='stylesheet',type='text/css')
     link(href='css/normalize.css', rel='stylesheet')
     link(href='css/skeleton.css', rel='stylesheet')
     link(href='css/workquest.css', rel='stylesheet')
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+
+    script(src='https://code.jquery.com/jquery-3.2.0.min.js')
+    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js')
+
   body
     #nav
       .container
@@ -12,15 +18,29 @@ html
           #nav-stats
             span.username Jonny the Destroyer
             span.level 17
-            span.levelname Ascended one
-    
-    br
-    br
+
     .container
-      form(action='/login')
-        .row
-          input.u-full-width(type='email', placeholder='email@email.com')
-        .row
-          input.u-full-width(type='password', placeholder='password')
-        .row
-          input.u-full-width(type='submit')
+      .three.columns
+        img(src='images/ascended.jpg')
+      .nine.columns
+        h2 Jonny Balls
+        h5 Ascended One
+        p Your levels of productivity are typically only reached after years of contemplation in tibetan monastaries.
+
+    .row.tasklists
+      .four.columns.tasklist
+        .tasktitle Available
+        ul.tasks
+          li Make templates
+          li Make login
+          li Download assets
+          li Win the MHR £2000 award
+      .four.columns.tasklist
+        .tasktitle Current
+        ul.tasks
+          li Move lists
+      .four.columns.tasklist
+        .tasktitle Finished
+        ul.tasks
+
+    script(src='/js/workquest.js')

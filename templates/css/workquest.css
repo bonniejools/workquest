@@ -1,3 +1,57 @@
+#nav {
+  height: 5em;
+  background-color: #674172;
+  margin-bottom: 4em; }
+  #nav #logo {
+    color: white;
+    line-height: 2.5em;
+    font-size: 2em;
+    font-weight: 300;
+    float: left; }
+  #nav .nav-right {
+    float: right;
+    color: white;
+    line-height: 5em;
+    text-transform: capitalize; }
+    #nav .nav-right #nav-stats > span {
+      margin-left: 2em; }
+      #nav .nav-right #nav-stats > span.level {
+        padding: 0.6em;
+        border-radius: 50%;
+        background: #674172;
+        border: 2px solid white;
+        text-align: center; }
 
+.tasklists {
+  margin-top: 4em;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
+  .tasklists .tasklist {
+    text-align: center; }
+    .tasklists .tasklist .tasktitle {
+      border: 2em solid #ECF0F1;
+      border-radius: 2em 2em 0 0;
+      text-transform: uppercase;
+      font-weight: bold;
+      height: 1em;
+      line-height: 1em;
+      background-color: #ECF0F1; }
+    .tasklists .tasklist ul.tasks {
+      text-align: left;
+      list-style: none;
+      padding: 0.5em;
+      padding-top: 0em;
+      padding-bottom: 3em; }
+      .tasklists .tasklist ul.tasks li {
+        background-color: white;
+        cursor: move;
+        margin-bottom: -1px;
+        font-size: 1.2em;
+        border-bottom: 1px solid #E1E1E1;
+        border-top: 1px solid #E1E1E1;
+        line-height: 4em; }
+        .tasklists .tasklist ul.tasks li .fa {
+          padding-right: 1em; }
 
 /*# sourceMappingURL=workquest.css.map */

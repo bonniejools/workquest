@@ -1,32 +1,53 @@
 
 <html>
   <head>
-    <title>Hello</title>
+    <title>WorkQuest - Jonny Balls</title>
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"/>
     <link href="css/normalize.css" rel="stylesheet"/>
     <link href="css/skeleton.css" rel="stylesheet"/>
     <link href="css/workquest.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   </head>
   <body>
     <div id="nav">
       <div class="container">
         <div id="logo">WorkQuest</div>
         <div class="nav-right">
-          <div id="nav-stats"><span class="username">Jonny the Destroyer</span><span class="level">17</span><span class="levelname">Ascended one</span></div>
+          <div id="nav-stats"><span class="username">Jonny the Destroyer</span><span class="level">17</span></div>
         </div>
       </div>
-    </div><br/><br/>
-    <div class="container">
-      <form action="/login">
-        <div class="row">
-          <input class="u-full-width" type="email" placeholder="email@email.com"/>
-        </div>
-        <div class="row">
-          <input class="u-full-width" type="password" placeholder="password"/>
-        </div>
-        <div class="row">
-          <input class="u-full-width" type="submit"/>
-        </div>
-      </form>
     </div>
+    <div class="container">
+      <div class="three columns"><img src="images/ascended.jpg"/></div>
+      <div class="nine columns">
+        <h2>Jonny Balls</h2>
+        <h5>Ascended One</h5>
+        <p>Your levels of productivity are typically only reached after years of contemplation in tibetan monastaries.</p>
+      </div>
+    </div>
+    <div class="row tasklists">
+      <div class="four columns tasklist">
+        <div class="tasktitle">Available</div>
+        <ul class="tasks">
+          <li>Make templates</li>
+          <li>Make login</li>
+          <li>Download assets</li>
+          <li>Win the MHR £2000 award</li>
+        </ul>
+      </div>
+      <div class="four columns tasklist">
+        <div class="tasktitle">Current</div>
+        <ul class="tasks">
+          <li>Move lists</li>
+        </ul>
+      </div>
+      <div class="four columns tasklist">
+        <div class="tasktitle">Finished</div>
+        <ul class="tasks"></ul>
+      </div>
+    </div>
+    <script src="/js/workquest.js"></script>
   </body>
 </html>
