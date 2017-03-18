@@ -10,14 +10,11 @@ block content
           th Level
           th XP
       tbody
-        tr
-          td Jonny Balls
-          td Level 9 God
-          td 12323
-        tr
-          td Pedro Santos
-          td Level 1 pleb
-          td 10
+        each user in users
+          tr
+            td=user.name
+            td Level 9 God
+            td 12323
   .six.columns
     h3 New Task
     form(action='/singup' method='post')

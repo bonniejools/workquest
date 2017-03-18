@@ -64,7 +64,10 @@ app.get('/me', ensure ,(req,res)=>{
 })
 
 app.get('/manage', (req, res)=>{
-    res.render('manage');
+    User.find(function(err, users) {
+        console.log(users);
+        res.render('manage', {users: users});
+    });
 });
 
 //User managment
