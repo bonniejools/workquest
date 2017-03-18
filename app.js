@@ -20,8 +20,8 @@ var User = mongoose.model('user',
         name: String,
         hash: String,
         xp:Number,
-        gold: Number
-        type: Number,
+        gold: Number,
+        type: Number
     })
 
 app.get('/view/',(req,res)=>{
