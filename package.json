@@ -17,9 +17,12 @@
   },
   "homepage": "https://github.com/bonniejools/workquest#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "express-session": "^1.15.1",
     "mocha": "^3.2.0",
     "mongodb": "^2.2.25",
+    "mongoose": "^4.9.0",
     "pug": "^2.0.0-beta11",
     "sha256": "^0.2.0"
   }

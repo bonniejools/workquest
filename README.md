@@ -7,7 +7,8 @@ For dependencies
 npm install 
 ```
 
-##Paths
+## Paths
+
 |Path|Description|
 |-----|-------|
 |app.js | main server application |
