@@ -24,15 +24,37 @@ var User = mongoose.model('user',
         gold: Number,
         type: Number
     })
+var Task = mongoose.model('tasl',
+    {
+        name:String,
+        xp:Number,
+        gold:Number,
+        owner:String
+    })
 
-app.get('/view/',(req,res)=>{
-    User.find({},(err,users)=>
-        {
-            if(err)
-                throw err
-            res.send(users)
-        })
-})
+// app.get('/view/',(req,res)=>{
+//     User.find({},(err,users)=>
+//         {
+//             if(err)
+//                 throw err
+//             res.send(users)
+//         })
+// })
+// API stuff
+app.post('/api/add',ensure, (req,res)=>
+    {
+        var name = req.body.name
+        var xp = req.body.hours * 10
+        var gold = req.body.gold
+        var sesh = req.session
+        var owner = sesh.user._id
+    })
+
+
+
+
+// End of api stuff
+// User pages
 app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
@@ -83,7 +105,7 @@ app.post('/login',(req,res)=>
             }
         })
     })
-app.post('/singup',(req,res)=>
+app.post('/signup',(req,res)=>
     {
         var mail = req.body.mail
         var pass = req.body.pass
@@ -105,7 +127,7 @@ app.use(express.static('static'))
 app.all('/',(req,res)=>{
     res.render('login')
 })
-app.get('/singup',(req,res)=>{
+app.get('/signup',(req,res)=>{
     res.render('register')
 })
 
