@@ -1,9 +1,26 @@
 html
   head
     title Hello
-    link(href='css/normalize.css')
-    link(href='css/skeleton.css')
-    link(href='css/workquest.css')
+    link(href='css/normalize.css', rel='stylesheet')
+    link(href='css/skeleton.css', rel='stylesheet')
+    link(href='css/workquest.css', rel='stylesheet')
   body
-    h1 this is my message
-    p this is my paragraph
+    #nav
+      .container
+        #logo WorkQuest
+        .nav-right
+          #nav-stats
+            span.username Jonny the Destroyer
+            span.level 17
+            span.levelname Ascended one
+    
+    br
+    br
+    .container
+      form(action='/login')
+        .row
+          input.u-full-width(type='email', placeholder='email@email.com')
+        .row
+          input.u-full-width(type='password', placeholder='password')
+        .row
+          input.u-full-width(type='submit')

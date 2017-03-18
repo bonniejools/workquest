@@ -2,12 +2,31 @@
 <html>
   <head>
     <title>Hello</title>
-    <link href="css/normalize.css"/>
-    <link href="css/skeleton.css"/>
-    <link href="css/workquest.css"/>
+    <link href="css/normalize.css" rel="stylesheet"/>
+    <link href="css/skeleton.css" rel="stylesheet"/>
+    <link href="css/workquest.css" rel="stylesheet"/>
   </head>
   <body>
-    <h1>this is my message</h1>
-    <p>this is my paragraph</p>
+    <div id="nav">
+      <div class="container">
+        <div id="logo">WorkQuest</div>
+        <div class="nav-right">
+          <div id="nav-stats"><span class="username">Jonny the Destroyer</span><span class="level">17</span><span class="levelname">Ascended one</span></div>
+        </div>
+      </div>
+    </div><br/><br/>
+    <div class="container">
+      <form action="/login">
+        <div class="row">
+          <input class="u-full-width" type="email" placeholder="email@email.com"/>
+        </div>
+        <div class="row">
+          <input class="u-full-width" type="password" placeholder="password"/>
+        </div>
+        <div class="row">
+          <input class="u-full-width" type="submit"/>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
