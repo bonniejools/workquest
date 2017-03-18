@@ -44,6 +44,12 @@ $flat-green: #66CC99;
     }
 }
 
+.user-stats {
+    img {
+        width: 100%;
+    }
+}
+
 $tasklist-color: #ECF0F1;
 .tasklists {
     margin-top: 4em;
@@ -70,6 +76,7 @@ $tasklist-color: #ECF0F1;
             padding: 0.5em;
             padding-top: 0em;
             padding-bottom: 3em;
+
             li {
                 background-color: white;
                 .fa {
@@ -82,7 +89,18 @@ $tasklist-color: #ECF0F1;
                 border-top: 1px solid #E1E1E1;
                 line-height: 4em;
             }
+
+            &.tasks-finished {
+                text-decoration: line-through;
+            }
         }
+
     }
+}
+
+.big-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 

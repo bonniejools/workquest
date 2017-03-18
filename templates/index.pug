@@ -19,13 +19,27 @@ html
             span.username Jonny the Destroyer
             span.level 17
 
-    .container
-      .three.columns
-        img(src='images/ascended.jpg')
-      .nine.columns
-        h2 Jonny Balls
-        h5 Ascended One
-        p Your levels of productivity are typically only reached after years of contemplation in tibetan monastaries.
+    .row.big-container
+      .six.columns.user-stats
+        .four.columns
+          img(src='images/ascended.jpg')
+        .eight.columns
+          h2 Jonny Balls
+          h5 Ascended One
+          p Your levels of productivity are typically only reached after years of contemplation in tibetan monastaries. Mortals peform pilgramage yearly in order to worship at your feet. They watch in wonder as you code at near super-human speeds, your hands dancing across the keys, as you create from nothing software breathtaking beauty.
+      .six.columns
+        table.u-full-width
+          thead
+            tr
+              th Name
+              th Level
+          tbody
+            tr
+              td Siokhan
+              td 3
+            tr
+              td Pedro Santos de Mendonca
+              td 2
 
     .row.tasklists
       .four.columns.tasklist
@@ -41,6 +55,7 @@ html
           li Move lists
       .four.columns.tasklist
         .tasktitle Finished
-        ul.tasks
+        ul.tasks.tasks-finished
+          li Line through
 
     script(src='/js/workquest.js')

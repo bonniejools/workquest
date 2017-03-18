@@ -22,6 +22,9 @@
         border: 2px solid white;
         text-align: center; }
 
+.user-stats img {
+  width: 100%; }
+
 .tasklists {
   margin-top: 4em;
   width: 80%;
@@ -53,5 +56,12 @@
         line-height: 4em; }
         .tasklists .tasklist ul.tasks li .fa {
           padding-right: 1em; }
+      .tasklists .tasklist ul.tasks.tasks-finished {
+        text-decoration: line-through; }
+
+.big-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
 
 /*# sourceMappingURL=workquest.css.map */
