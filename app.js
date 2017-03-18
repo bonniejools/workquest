@@ -62,6 +62,11 @@ app.get('/me', ensure ,(req,res)=>{
         res.render('profile',{user:sesh.user})
     })
 })
+
+app.get('/manage', (req, res)=>{
+    res.render('manage');
+});
+
 //User managment
 function login(req, user, callback)
 {
