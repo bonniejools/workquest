@@ -13,6 +13,10 @@ $flat-green: #66CC99;
 $flat-darkgreen: #26A65B;
 $tasklist-color: #ECF0F1;
 
+img {
+    image-rendering: pixelated;
+}
+
 #nav {
     height: $nav-height;
     background-color: $primary-color;

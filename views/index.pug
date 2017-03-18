@@ -39,18 +39,18 @@ block content
   .row.tasklists
     .four.columns.tasklist
       .tasktitle Available
-      ul.tasks
-        li Make templates
-        li Make login
-        li Download assets
-        li Win the MHR £2000 award
+      ul.tasks(list_name="available")
+        li(task_id="1") Make templates
+        li(task_id="2") Make login
+        li(task_id="3") Download assets
+        li(task_id="4") Win the MHR £2000 award
     .four.columns.tasklist
       .tasktitle Current
-      ul.tasks
-        li Move lists
+      ul.tasks(list_name="current")
+        li(task_id="5") Move lists
     .four.columns.tasklist
       .tasktitle Finished
-      ul.tasks.tasks-finished
-        li Line through
+      ul.tasks.tasks-finished(list_name="finished")
+        li(task_id="6") Line through
 
   script(src='/js/workquest.js')
