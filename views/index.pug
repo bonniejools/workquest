@@ -1,55 +1,56 @@
 extends base.pug
 
 block content
-  .six.columns.user-stats
-    .four.columns
-      img(src='images/peasant.jpg')
-      #xp-progress
-        .xp-current-progress
-      .xp-progress-text 45 / 100xp
+  .row
+    .six.columns.user-stats
+      .four.columns
+        img(src='images/peasant.jpg')
+        #xp-progress
+          .xp-current-progress
+        .xp-progress-text 45 / 100xp
 
-    .eight.columns
-      h3 Jonny Balls
-        span.level Level 1 Peasant
-      #stats
-        .stat
-          img(src='/assets/Item__40.png')
-          span 7
-        .stat
-          img(src='/assets/Item__05.png')
-          span 15
-        .stat
-          img(src='/assets/Item__25.png')
-          span 8
-  .six.columns
-    table.u-full-width
-      thead
-        tr
-          th Name
-          th Level
-      tbody
-        tr
-          td Siokhan
-          td 3
-        tr
-          td Pedro Santos de Mendonca
-          td 2
+      .eight.columns
+        h3 Jonny Balls
+          span.level Level 1 Peasant
+        #stats
+          .stat
+            img(src='/assets/Item__40.png')
+            span 7
+          .stat
+            img(src='/assets/Item__05.png')
+            span 15
+          .stat
+            img(src='/assets/Item__25.png')
+            span 8
+    .six.columns
+      table.u-full-width
+        thead
+          tr
+            th Name
+            th Level
+        tbody
+          tr
+            td Siokhan
+            td 3
+          tr
+            td Pedro Santos de Mendonca
+            td 2
 
   .row.tasklists
-  .four.columns.tasklist
-    .tasktitle Available
-    ul.tasks
-      li Make templates
-      li Make login
-      li Download assets
-      li Win the MHR £2000 award
-  .four.columns.tasklist
-    .tasktitle Current
-    ul.tasks
-      li Move lists
-  .four.columns.tasklist
-    .tasktitle Finished
-    ul.tasks.tasks-finished
-      li Line through
+    .four.columns.tasklist
+      .tasktitle Available
+      ul.tasks
+        li Make templates
+        li Make login
+        li Download assets
+        li Win the MHR £2000 award
+    .four.columns.tasklist
+      .tasktitle Current
+      ul.tasks
+        li Move lists
+    .four.columns.tasklist
+      .tasktitle Finished
+      ul.tasks.tasks-finished
+        li Line through
 
   script(src='/js/workquest.js')
