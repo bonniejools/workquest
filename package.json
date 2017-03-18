@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.15.2",
     "mocha": "^3.2.0",
-    "mongodb": "^2.2.25"
+    "mongodb": "^2.2.25",
+    "pug": "^2.0.0-beta11"
   }
 }
