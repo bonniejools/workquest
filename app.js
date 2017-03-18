@@ -11,6 +11,7 @@ const express = require('express'),
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.set('view engine', 'pug')
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+app.locals.pretty = true;
 
 //Db stuff
 mongoose.connect("mongodb://localhost/work")
