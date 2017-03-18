@@ -20,25 +20,9 @@ var User = mongoose.model('user',
         name: String,
         hash: String,
         xp:Number,
-        level: Number,
         gold: Number
     })
 
-app.get('/add/:name',(req,res)=>{
-    var tmp = new User();
-    tmp.name = req.params.name
-    tmp.mail = "peumendonca@gmail.com"
-    tmp.hash = '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
-    tmp.xp = 0
-    tmp.level = 0
-    tmp.gold = 0
-    tmp.save(()=>{
-        var sesh = req.session
-        sesh.logged = true
-        sesh.user = tmp
-        res.send("Hello " + req.params.name)
-    })
-})
 app.get('/view/',(req,res)=>{
     User.find({},(err,users)=>
         {
@@ -89,12 +73,30 @@ app.post('/login',(req,res)=>
                 res.send("User not even found")
             }
         })
-        // res.send(user + pass)
+    })
+app.post('/singup',(req,res)=>
+    {
+        var mail = req.body.mail
+        var pass = req.body.pass
+        var name = req.body.name
+
+        var tmp = new User();
+        tmp.name = name
+        tmp.mail = mail
+        tmp.hash = hash(pass)
+        tmp.xp = 0
+        tmp.gold = 0
+        tmp.save(()=>{
+            login(req, tmp,()=> res.redirect("/profile"))
+        })
     })
 //Routes
 app.use(express.static('static'))
 app.all('/',(req,res)=>{
     res.render('index')
+})
+app.get('/singup',(req,res)=>{
+    res.render('register')
 })
 
 app.listen(3000,()=>console.log("Server listening on port 3000"))
