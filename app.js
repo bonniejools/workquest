@@ -33,10 +33,10 @@ app.get('/view/',(req,res)=>{
             res.send(users)
         })
 })
-app.get('/profile', ensure ,(req,res)=>{
+app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
     console.log(sesh.user)
-    res.send(sesh.user)
+    res.render('index',{user:sesh.user})
 })
 //User managment
 function login(req, user, callback)
@@ -71,7 +71,7 @@ app.post('/login',(req,res)=>
             if(tmpUser)
             {
                 if (tmpUser.hash == hash(pass))
-                    login(req, tmpUser,()=> res.redirect("/profile"))
+                    login(req, tmpUser,()=> res.redirect("/me"))
                 else
                     res.send("Lol try again")
             }
@@ -95,13 +95,13 @@ app.post('/singup',(req,res)=>
         tmp.gold = 0
         tmp.type = 0
         tmp.save(()=>{
-            login(req, tmp,()=> res.redirect("/profile"))
+            login(req, tmp,()=> res.redirect("/me"))
         })
     })
 //Routes
 app.use(express.static('static'))
 app.all('/',(req,res)=>{
-    res.render('index')
+    res.render('login')
 })
 app.get('/singup',(req,res)=>{
     res.render('register')
