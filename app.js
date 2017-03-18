@@ -24,12 +24,14 @@ var User = mongoose.model('user',
         gold: Number,
         type: Number
     })
-var Task = mongoose.model('tasl',
+var Task = mongoose.model('task',
     {
         name:String,
         xp:Number,
         gold:Number,
-        owner:String
+        owner:String,
+        doneBy:String,
+        priority:Number
     })
 
 // app.get('/view/',(req,res)=>{
@@ -41,13 +43,57 @@ var Task = mongoose.model('tasl',
 //         })
 // })
 // API stuff
-app.post('/api/add',ensure, (req,res)=>
+app.post('/api/add', (req,res)=>
     {
-        var name = req.body.name
-        var xp = req.body.hours * 10
-        var gold = req.body.gold
-        var sesh = req.session
-        var owner = sesh.user._id
+        if (!req.body.name)
+        {
+            res.send("Request failed")
+        }
+        else
+        {
+            var name = req.body.name
+            var xp = req.body.hours * 10
+            var gold = xp
+            var priority = req.body.priority
+            var sesh = req.session
+            // var owner = sesh.user._id
+
+            var tmp = new Task()
+            tmp.name = name
+            tmp.xp = xp
+            tmp.gold = gold
+            tmp.owner = 0
+            tmp.priority = priority
+            tmp.doneBy = 0
+            tmp.save(()=>
+                {
+                    res.send("Task: "+ name + " has been added")
+                })
+        }
+    })
+app.post('/api/complete/', (req,res)=>
+    {
+        var user = req.session.user
+        var tId = req.body.tId
+        Task.findByIdAndUpdate(tId, {owner:1,doneBy:user.id},(err,doc)=>{
+            if (err)
+                throw err
+            var xp = doc.xp
+            var gold = doc.gold
+            res.send('Task ' + doc.name + ' completed' )
+        })
+
+    })
+app.post('/api/take/', (req,res)=>
+    {
+        var user = req.session.user
+        // var user = req.body.uId
+        var tId = req.body.tId
+        Task.findByIdAndUpdate(tId, {owner:user.id},(err,doc)=>{
+            if (err)
+                throw err
+            res.send('Task ' + doc.name + ' taken by ' + user.id )
+        })
     })
 
 
@@ -76,7 +122,8 @@ function ensure(req,res,next)
     if(req.session.logged == true)
         next()
     else
-        throw err
+        res.redirect("/")
+    // throw err
 }
 
 app.get('/login', (req, res)=>
@@ -97,11 +144,11 @@ app.post('/login',(req,res)=>
                 if (tmpUser.hash == hash(pass))
                     login(req, tmpUser,()=> res.redirect("/me"))
                 else
-                    res.send("Lol try again")
+                    res.redirect("/")
             }
             else
             {
-                res.send("User not even found")
+                res.redirect("/")
             }
         })
     })
@@ -125,7 +172,10 @@ app.post('/signup',(req,res)=>
 //Routes
 app.use(express.static('static'))
 app.all('/',(req,res)=>{
-    res.render('login')
+    if(req.session.logged)
+        res.redirect('/me')
+    else
+        res.render('login')
 })
 app.get('/signup',(req,res)=>{
     res.render('register')
