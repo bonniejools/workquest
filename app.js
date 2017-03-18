@@ -21,6 +21,7 @@ var User = mongoose.model('user',
         hash: String,
         xp:Number,
         gold: Number
+        type: Number,
     })
 
 app.get('/view/',(req,res)=>{
@@ -86,6 +87,7 @@ app.post('/singup',(req,res)=>
         tmp.hash = hash(pass)
         tmp.xp = 0
         tmp.gold = 0
+        tmp.type = 0
         tmp.save(()=>{
             login(req, tmp,()=> res.redirect("/profile"))
         })
