@@ -11,6 +11,9 @@ img {
     font-size: 2em;
     font-weight: 300;
     float: left; }
+    #nav #logo a {
+      text-decoration: none;
+      color: white; }
   #nav .nav-right {
     float: right;
     color: white;
