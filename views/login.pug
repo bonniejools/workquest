@@ -4,11 +4,11 @@ block content
   h2 Login
   .row
     .six.columns
-      form(action='/login')
+      form(action='/login', method="post")
         .row
-          input.u-full-width(type='email', placeholder='email@email.com')
+          input.u-full-width(type='email', placeholder='email@email.com',name='user')
         .row
-          input.u-full-width(type='password', placeholder='password')
+          input.u-full-width(type='password', placeholder='password',name='pass')
         .row
           input.u-full-width(type='submit')
 

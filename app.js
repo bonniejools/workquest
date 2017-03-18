@@ -35,8 +35,10 @@ app.get('/view/',(req,res)=>{
 })
 app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
-    console.log(sesh.user)
-    res.render('index',{user:sesh.user})
+    User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
+        console.log(sesh.user)
+        res.render('index',{user:sesh.user})
+    })
 })
 //User managment
 function login(req, user, callback)
@@ -56,9 +58,9 @@ function ensure(req,res,next)
 }
 
 app.get('/login', (req, res)=>
-{
-    res.render('login')
-})
+    {
+        res.render('login')
+    })
 
 app.post('/login',(req,res)=>
     {
