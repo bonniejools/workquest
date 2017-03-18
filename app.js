@@ -96,9 +96,6 @@ app.post('/api/take/', (req,res)=>
         })
     })
 
-
-
-
 // End of api stuff
 // User pages
 app.get('/me', ensure ,(req,res)=>{
