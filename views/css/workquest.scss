@@ -4,6 +4,103 @@
 //
 //
 
-$nav-height: 2em;
+$nav-height: 5em;
 
 // Colors
+$primary-color: #674172;
+$primary-color: #674172;
+$flat-green: #66CC99;
+
+#nav {
+    height: $nav-height;
+    background-color: $primary-color;
+    margin-bottom: 4em;
+
+    #logo {
+        color: white;
+        line-height: $nav-height / 2;
+        font-size: 2em;
+        font-weight: 300;
+        float: left;
+    }
+
+    .nav-right {
+        float: right;
+        color: white;
+        line-height: $nav-height;
+        text-transform: capitalize;
+
+        #nav-stats>span {
+            margin-left: 2em;
+
+            &.level {
+                padding: 0.6em;
+                border-radius: 50%;
+                background: $primary-color;
+                border: 2px solid white;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.user-stats {
+    img {
+        width: 100%;
+    }
+}
+
+$tasklist-color: #ECF0F1;
+.tasklists {
+    margin-top: 4em;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    .tasklist {
+        text-align: center;
+
+        .tasktitle {
+            border: 2em solid $tasklist-color;
+            border-radius: 2em 2em 0 0;
+
+            text-transform: uppercase;
+            font-weight: bold;
+            height: 1em;
+            line-height: 1em;
+            background-color: $tasklist-color;
+        }
+
+        ul.tasks {
+            text-align: left;
+            list-style: none;
+            padding: 0.5em;
+            padding-top: 0em;
+            padding-bottom: 3em;
+
+            li {
+                background-color: white;
+                .fa {
+                    padding-right: 1em;
+                }
+                cursor: move;
+                margin-bottom: -1px;
+                font-size: 1.2em;
+                border-bottom: 1px solid #E1E1E1;
+                border-top: 1px solid #E1E1E1;
+                line-height: 4em;
+            }
+
+            &.tasks-finished {
+                text-decoration: line-through;
+            }
+        }
+
+    }
+}
+
+.big-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
