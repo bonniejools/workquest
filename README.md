@@ -8,6 +8,7 @@ npm install
 ```
 
 ##Paths
+
 |Path|Description|
 |-----|-------|
 |app.js | main server application |
