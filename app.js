@@ -54,6 +54,11 @@ function ensure(req,res,next)
         throw err
 }
 
+app.get('/login', (req, res)=>
+{
+    res.render('login')
+})
+
 app.post('/login',(req,res)=>
     {
         var user = req.body.user

@@ -1,73 +1,55 @@
-html
-  head
-    title WorkQuest - Jonny Balls
-    link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600',rel='stylesheet',type='text/css')
-    link(href='css/normalize.css', rel='stylesheet')
-    link(href='css/skeleton.css', rel='stylesheet')
-    link(href='css/workquest.css', rel='stylesheet')
-    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+extends base.pug
 
-    script(src='https://code.jquery.com/jquery-3.2.0.min.js')
-    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js')
+block content
+  .six.columns.user-stats
+    .four.columns
+      img(src='images/peasant.jpg')
+      #xp-progress
+        .xp-current-progress
+      .xp-progress-text 45 / 100xp
 
-  body
-    #nav
-      .big-container
-        #logo WorkQuest
-        .nav-right
-          #nav-stats
-            span.username j.balls@btopenworld.com
+    .eight.columns
+      h3 Jonny Balls
+        span.level Level 1 Peasant
+      #stats
+        .stat
+          img(src='/images/gold.jpeg')
+          span 7
+        .stat
+          img(src='/images/damage.png')
+          span 15
+        .stat
+          img(src='/images/shield.png')
+          span 8
+  .six.columns
+    table.u-full-width
+      thead
+        tr
+          th Name
+          th Level
+      tbody
+        tr
+          td Siokhan
+          td 3
+        tr
+          td Pedro Santos de Mendonca
+          td 2
 
-    .row.big-container
-      .six.columns.user-stats
-        .four.columns
-          img(src='images/peasant.jpg')
-          #xp-progress
-            .xp-current-progress
-          .xp-progress-text 45 / 100xp
+  .row.tasklists
+  .four.columns.tasklist
+    .tasktitle Available
+    ul.tasks
+      li Make templates
+      li Make login
+      li Download assets
+      li Win the MHR £2000 award
+  .four.columns.tasklist
+    .tasktitle Current
+    ul.tasks
+      li Move lists
+  .four.columns.tasklist
+    .tasktitle Finished
+    ul.tasks.tasks-finished
+      li Line through
 
-        .eight.columns
-          h3 Jonny Balls
-            span.level Level 1 Peasant
-          #stats
-            .stat
-              img(src='/images/gold.jpeg')
-              span 7
-            .stat
-              img(src='/images/damage.png')
-              span 15
-            .stat
-              img(src='/images/shield.png')
-              span 8
-      .six.columns
-        table.u-full-width
-          thead
-            tr
-              th Name
-              th Level
-          tbody
-            tr
-              td Siokhan
-              td 3
-            tr
-              td Pedro Santos de Mendonca
-              td 2
-
-    .row.tasklists
-      .four.columns.tasklist
-        .tasktitle Available
-        ul.tasks
-          li Make templates
-          li Make login
-          li Download assets
-          li Win the MHR £2000 award
-      .four.columns.tasklist
-        .tasktitle Current
-        ul.tasks
-          li Move lists
-      .four.columns.tasklist
-        .tasktitle Finished
-        ul.tasks.tasks-finished
-          li Line through
-
-    script(src='/js/workquest.js')
+  script(src='/js/workquest.js')
