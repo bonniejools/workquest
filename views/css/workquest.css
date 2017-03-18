@@ -24,6 +24,18 @@
   color: #999;
   float: right;
   line-height: 2.5em; }
+.user-stats #stats .stat {
+  width: 4.5em;
+  display: inline-block;
+  padding-right: 0.5em; }
+  .user-stats #stats .stat img {
+    float: left;
+    height: 3em;
+    width: 3em; }
+  .user-stats #stats .stat span {
+    float: right;
+    line-height: 2em;
+    font-size: 1.5em; }
 
 .tasklists {
   margin-top: 4em;

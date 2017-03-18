@@ -50,6 +50,26 @@ $flat-green: #66CC99;
         line-height: 2.5em;
     }
 
+    #stats {
+        .stat {
+            width: 4.5em;
+            display: inline-block;
+            padding-right: 0.5em;
+
+            img {
+                float: left;
+                height: 3em;
+                width: 3em;
+            }
+
+            span {
+                float: right;
+                line-height: 2em;
+                font-size: 1.5em;
+            }
+        }
+    }
+
 }
 
 $tasklist-color: #ECF0F1;
