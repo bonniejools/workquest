@@ -3,126 +3,147 @@
 	"name":"sword1", 
 	"tier":1, 
         "damage":5, 
+        "cost":100,
 	"src":"Item__00.png"
     },
     {
 	"name":"sword2", 
 	"tier":2, 
         "damage":10, 
+        "cost":200,
 	"src":"Item__01.png"
     },
     {
 	"name":"sword3", 
 	"tier":3, 
         "damage":20, 
+        "cost":400,
 	"src":"Item__05.png"
     },
     {
 	"name":"sword4", 
 	"tier":4, 
         "damage":40, 
+        "cost":800,
 	"src":"Item__06.png"
     },
     {
 	"name":"sword5", 
 	"tier":5, 
         "damage":80, 
+        "cost":1600,
 	"src":"Item__07.png"
     },
     {
         "name":"helmet1",
         "tier":1,
         "hp":10,
+        "cost":100,
         "src":"Item__44.png"
     },
     {
         "name":"helmet2",
         "tier":2,
         "hp":20,
+        "cost":200,
         "src":"Item__45.png"
     },
     {
         "name":"helmet3",
         "tier":3,
         "hp":40,
+        "cost":400,
         "src":"Item__46.png"
     },
     {
         "name":"helmet4",
         "tier":4,
         "hp":80,
+        "cost":800,
         "src":"Item__47.png"
     },
     {
         "name":"gloves1",
         "tier":1,
         "hp":10,
+        "cost":100,
         "src":"Item__60.png"
     },
     {
         "name":"gloves2",
         "tier":2,
         "hp":20,
+        "cost":200,
         "src":"Item__61.png"
     },
     {
         "name":"gloves3",
         "tier":3,
         "hp":40,
+        "cost":400,
         "src":"Item__62.png"
     },
     {
         "name":"gloves4",
         "tier":4,
         "hp":800,
+        "cost":800,
         "src":"Item__63.png"
     },
     {
         "name":"chest1",
         "tier":1,
         "hp":15,
+        "cost":150,
         "src":"Item__56.png"
     },
     {
         "name":"chest2",
         "tier":2,
         "hp":30,
+        "cost":300,
         "src":"Item__57.png"
     },
     {
         "name":"chest3",
         "tier":3,
         "hp":60,
+        "cost":600,
         "src":"Item__58.png"
     },
     {
         "name":"chest4",
         "tier":4,
         "hp":120,
+        "cost":1200,
         "src":"Item__59.png"
     },
     {
         "name":"legs1",
         "tier":1,
         "hp":10,
+        "cost":100,
         "src":"Item__48.png"
     },
     {
         "name":"legs2",
         "tier":2,
         "hp":20,
+        "cost":200,
         "src":"Item__51.png"
     },
     {
         "name":"legs3",
         "tier":3,
         "hp":40,
+        "cost":400,
         "src":"Item__49.png"
     },
     {
         "name":"legs4",
         "tier":4,
         "hp":80,
+        "cost":800,
         "src":"Item__50.png"
     }
 ]
