@@ -270,7 +270,10 @@ app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
     User.findOne({_id:sesh.user._id}, (err,user) => {
         getUserTasks(user._id, (tasks) => {
-            res.render('profile',{tasks: tasks, user:user, items: items})
+            User.find((err,users)=>
+                {
+                    res.render('profile',{tasks: tasks, user:user, items: items,users:users})
+                })
         });
     })
 })

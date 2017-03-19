@@ -71,12 +71,11 @@ block content
             th Name
             th Level
         tbody
-          tr
-            td Siokhan
-            td 3
-          tr
-            td Pedro Santos de Mendonca
-            td 2
+          each pleb in users
+            tr
+              td
+                  a(href="/duel/"+pleb._id)= pleb.name
+              td= Math.floor(pleb.xp/100) + 1
 
   .row.tasklists
     .four.columns.tasklist
