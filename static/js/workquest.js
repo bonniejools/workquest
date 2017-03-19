@@ -131,6 +131,7 @@ $(".upgrade-button").click(function() {
                 }
                 else {
                     console.log(item_name + " upgrade :D");
+                    location.reload();
                 }
             });
 });
