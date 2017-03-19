@@ -154,7 +154,7 @@ app.post('/api/take/', (req,res)=>
     {
         var user = req.session.user
         var tId = req.body.tId
-        Task.findByIdAndUpdate(tId, {owner:user._id},(err,doc)=>{
+        Task.findByIdAndUpdate(tId, {owner:user._id,doneBy:0},(err,doc)=>{
             if (err)
                 throw err
             console.log(doc);
@@ -165,7 +165,7 @@ app.post('/api/release/', (req,res)=>
     {
         var user = req.session.user
         var tId = req.body.tId
-        Task.findByIdAndUpdate(tId, {owner:0},(err,doc)=>{
+        Task.findByIdAndUpdate(tId, {owner:0,doneBy:0},(err,doc)=>{
             if (err)
                 throw err
             console.log(doc);
