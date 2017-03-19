@@ -61,6 +61,11 @@ userSchema.methods.level = function() {
     var level = "Level " + meka.getLevel(this.xp);
     return level + " " + levelClass(meka.getLevel(this.xp));
 }
+userSchema.methods.levelClass = function() {
+    return String(levelClass(meka.getLevel(this.xp)))
+        .toLowerCase()
+        .replace(/\s/g, '');
+}
 
 var taskSchema = mongoose.Schema(
     {
