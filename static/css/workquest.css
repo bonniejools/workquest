@@ -5,15 +5,15 @@ img {
   height: 5em;
   background-color: #674172;
   margin-bottom: 4em; }
+  #nav a {
+    text-decoration: none;
+    color: white; }
   #nav #logo {
     color: white;
     line-height: 2.5em;
     font-size: 2em;
     font-weight: 300;
     float: left; }
-    #nav #logo a {
-      text-decoration: none;
-      color: white; }
   #nav .nav-right {
     float: right;
     color: white;
