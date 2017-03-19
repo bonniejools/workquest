@@ -11,7 +11,7 @@ block content
 
       .eight.columns
         h3=user.name
-          span.level Level 1 Peasant
+          span.level=user.level()
         #stats
           .stat
             img(src='/assets/Item__40.png')

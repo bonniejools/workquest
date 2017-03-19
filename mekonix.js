@@ -2,7 +2,8 @@
 var items = require('./items.json')
 
 function getLevel(exp){
-    var level = Math.floor(exp/100);
+    // Increased by one so level is not zero
+    var level = Math.floor(exp/100) + 1;
     return level;
 }
 

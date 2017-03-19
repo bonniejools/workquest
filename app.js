@@ -36,8 +36,30 @@ var userSchema = mongoose.Schema(
         }
     })
 
+function levelClass(level) {
+    if (level < 5) {
+        return "Peasant";
+    }
+    else if (level < 10) {
+        return "Merchant"
+    }
+    else if (level < 15) {
+        return "Knight"
+    }
+    else if (level < 20) {
+        return "Nobleman"
+    }
+    else if (level < 25) {
+        return "King"
+    }
+    else {
+        return "Enlightened One"
+    }
+}
+
 userSchema.methods.level = function() {
-    return meka.getLevel(this.xp);
+    var level = "Level " + meka.getLevel(this.xp);
+    return level + " " + levelClass(meka.getLevel(this.xp));
 }
 
 var taskSchema = mongoose.Schema(
