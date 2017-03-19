@@ -18,7 +18,7 @@ app.locals.pretty = true;
 
 //Db stuff
 mongoose.connect("mongodb://localhost/work")
-var User = mongoose.model('user',
+var userSchema = mongoose.Schema(
     {
         mail: String,
         name: String,
@@ -35,6 +35,11 @@ var User = mongoose.model('user',
             weapon:Number
         }
     })
+
+userSchema.methods.level = function() {
+    return meka.getLevel(this.xp);
+}
+
 var taskSchema = mongoose.Schema(
     {
         name:String,
@@ -44,7 +49,6 @@ var taskSchema = mongoose.Schema(
         doneBy:String,
         priority:Number
     });
-
 // Task status
 taskSchema.methods.status = function() {
     if (this.owner == 0) {
@@ -57,6 +61,7 @@ taskSchema.methods.status = function() {
 }
 
 var Task = mongoose.model('task', taskSchema);
+var User = mongoose.model('user', userSchema);
 
 // app.get('/view/',(req,res)=>{
 //     User.find({},(err,users)=>

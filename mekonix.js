@@ -1,7 +1,7 @@
 
 var items = require('./items.json')
 
-function levelUp (exp){
+function getLevel(exp){
     var level = Math.floor(exp/100);
     return level;
 }
@@ -44,4 +44,5 @@ function getItem(name)
     return tmp
 }
 
-module.exports = {levelUp, upgrade, canUpgrade, getItem}
+module.exports = {getLevel, upgrade, canUpgrade, getItem}
+
