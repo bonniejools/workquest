@@ -164,7 +164,7 @@ function generateDataset(length) {
     var cumulative = 0;
     for (var i=0; i<length; i++) {
         arr.push(cumulative);
-        cumulative += Math.random() * 1200;
+        cumulative += Math.floor(Math.random() * 1200);
     }
 
     console.log(arr);
