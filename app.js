@@ -8,8 +8,6 @@ const express = require('express'),
     meka = require('./mekonix.js'),
     items = require('./items.json')
 
-
-
 //Express set up
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.set('view engine', 'pug')
@@ -37,6 +35,16 @@ var userSchema = mongoose.Schema(
     })
 userSchema.methods.dmg = function()
 {
+    var dmg = items[this.gear.weapon].damage
+    return dmg 
+}
+userSchema.methods.hp = function()
+{
+    var hp = items[this.gear.helmet].hp +
+             items[this.gear.legs].hp +
+             items[this.gear.gloves].hp +
+             items[this.gear.chest].hp
+    return hp
 }
 
 function levelClass(level) {
