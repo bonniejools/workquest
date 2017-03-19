@@ -95,6 +95,15 @@ app.post('/api/take/', (req,res)=>
             res.send('Task ' + doc.name + ' taken by ' + user.id )
         })
     })
+app.post('/api/delete/', (req,res)=>
+    {
+        var tId = req.body.tId
+        Task.remove({_id:tId}, (err,doc)=>{
+            if (err)
+                throw err
+            res.send('Task id: ' + tId + ' removed')
+        })
+    })
 
 // End of api stuff
 // User pages
