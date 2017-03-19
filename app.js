@@ -281,7 +281,10 @@ app.get('/me', ensure ,(req,res)=>{
 app.get('/manage', (req, res)=>{
     User.find((err, users) => {
         Task.find((err, tasks) => {
-            res.render('manage', {tasks: tasks, users: users});
+            Task.find({owner:0},(err,avaliable)=>
+                {
+                    res.render('manage', {tasks: tasks, users: users,avaliable:avaliable});
+                })
         });
     });
 });
