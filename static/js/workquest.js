@@ -5,6 +5,15 @@ $( function() {
                   var task_id = ui.item.attr("task_id");
                   var moved_list = ui.item.parent().attr("list_name");
                   console.log("Task number " + task_id + " moved to " + moved_list);
+
+                  if (moved_list = "current") {
+                      $.post( '/api/take/', {'tId': task_id},
+                              (data) => console.log(data))
+                  }
+                  if (moved_list = "complete") {
+                      $.post( '/api/complete/', {'tId': task_id},
+                              (data) => console.log(data))
+                  }
               }
       }).disableSelection();
 
@@ -23,7 +32,7 @@ $("#newTaskForm").submit((e) => {
             'hours': data[1].value,
             'priority': data[2].value
         },
-        success: (data, status, jqXHR) => {console.log(data)}
+        success: (data, status, jqXHR) => {console.log(data); location.reload()}
     });
 
     // Validation is performed by html5

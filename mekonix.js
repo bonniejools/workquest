@@ -36,10 +36,10 @@ function canUpgrade (gold, item){
 function getItem(name)
 {
     var tmp = null
-    items.forEach((item)=>
+    items.forEach((item, i)=>
         {
             if(item.name == name)
-                tmp = item
+                tmp = i
         })
     return tmp
 }

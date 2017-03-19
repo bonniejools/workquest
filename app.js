@@ -86,23 +86,25 @@ app.post('/api/complete/', (req,res)=>
     {
         var user = req.session.user
         var tId = req.body.tId
-        Task.findByIdAndUpdate(tId, {owner:1,doneBy:user.id},(err,doc)=>{
+        Task.findByIdAndUpdate(tId, {owner:1,doneBy:user._id},(err,doc)=>{
             if (err)
                 throw err
             var xp = doc.xp
             var gold = doc.gold
-            res.send('Task ' + doc.name + ' completed' )
+            res.send('Task ' + doc.name + ' completed by ' + user._id)
         })
 
     })
 app.post('/api/take/', (req,res)=>
-    { var user = req.session.user
-        // var user = req.body.uId
+    {
+        var user = req.session.user
+        console.log(user);
         var tId = req.body.tId
-        Task.findByIdAndUpdate(tId, {owner:user.id},(err,doc)=>{
+        Task.findByIdAndUpdate(tId, {owner:user._id},(err,doc)=>{
             if (err)
                 throw err
-            res.send('Task ' + doc.name + ' taken by ' + user.id )
+            console.log(doc);
+            res.send('Task ' + doc.name + ' taken by ' + user._id )
         })
     })
 app.post('/api/delete/', (req,res)=>
@@ -115,16 +117,32 @@ app.post('/api/delete/', (req,res)=>
         })
     })
 
+// Return an object returning three lists of tasks for the user
+// (available, current and finished)
+function getUserTasks(user_id, callback) {
+    Task.find({"owner": 0 }, function(err, available_tasks) {
+        Task.find({"owner": user_id }, function(err, current_tasks) {
+            Task.find({"doneBy": user_id }, function(err, done_tasks) {
+            var tasks = {
+                'available': available_tasks,
+                'current':   current_tasks,
+                'done':      done_tasks
+            };
+            callback(tasks);
+            });
+        });
+    });
+}
+
 // End of api stuff
 // User pages
 app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
     console.log(sesh.user)
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
-        if(err)
-            throw err
-        console.log(sesh.user)
-        res.render('profile',{user:sesh.user})
+        getUserTasks(sesh.user._id, (tasks) => {
+            res.render('profile',{tasks: tasks, user:sesh.user})
+        });
     })
 })
 
@@ -208,11 +226,11 @@ app.post('/signup',(req,res)=>
             gold : 0,
             type : 0,
             gear:{
-                helmet : 1,
-                legs   : 1,
-                gloves : 1,
-                chest  : 1,
-                weapon : 1
+                helmet : meka.getItem('helmet1'),
+                legs   : meka.getItem('legs1'),
+                gloves : meka.getItem('gloves1'),
+                chest  : meka.getItem('chest1'),
+                weapon : meka.getItem('sword1')
             }
         });
         console.log(tmp)
