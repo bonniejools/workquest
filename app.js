@@ -7,6 +7,7 @@ const express = require('express'),
     session = require('express-session'),
     meka = require('./mekonix.js'),
     items = require('./items.json')
+    url = require('url')
 
 //Express set up
 app.use(require('body-parser').urlencoded({ extended: true }));
@@ -324,6 +325,13 @@ app.get('/login', (req, res)=>
     {
         res.render('login')
     })
+
+app.get('/fight', ensure, (req, res)=> {
+    var url_parts = url.parse(req.url, true);
+    var opponent_id = url_parts.opponent;
+
+    res.render('fight', {user: req.session.user, opponent: req.session.user, items: items});
+})
 
 app.post('/login',(req,res)=>
     {
