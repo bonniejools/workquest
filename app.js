@@ -18,7 +18,7 @@ app.locals.pretty = true;
 
 //Db stuff
 mongoose.connect("mongodb://localhost/work")
-var User = mongoose.model('user',
+var userSchema = mongoose.Schema(
     {
         mail: String,
         name: String,
@@ -35,7 +35,37 @@ var User = mongoose.model('user',
             weapon:Number
         }
     })
-var Task = mongoose.model('task',
+userSchema.methods.dmg = function()
+{
+}
+
+function levelClass(level) {
+    if (level < 5) {
+        return "Peasant";
+    }
+    else if (level < 10) {
+        return "Merchant"
+    }
+    else if (level < 15) {
+        return "Knight"
+    }
+    else if (level < 20) {
+        return "Nobleman"
+    }
+    else if (level < 25) {
+        return "King"
+    }
+    else {
+        return "Enlightened One"
+    }
+}
+
+userSchema.methods.level = function() {
+    var level = "Level " + meka.getLevel(this.xp);
+    return level + " " + levelClass(meka.getLevel(this.xp));
+}
+
+var taskSchema = mongoose.Schema(
     {
         name:String,
         xp:Number,
@@ -43,7 +73,20 @@ var Task = mongoose.model('task',
         owner:String,
         doneBy:String,
         priority:Number
-    })
+    });
+// Task status
+taskSchema.methods.status = function() {
+    if (this.owner == 0) {
+        return "Available";
+    }
+    if (this.doneBy != 0) {
+        return "Completed by " + this.doneBy;
+    }
+    return "Owned by " + this.owner;
+}
+
+var Task = mongoose.model('task', taskSchema);
+var User = mongoose.model('user', userSchema);
 
 // app.get('/view/',(req,res)=>{
 //     User.find({},(err,users)=>
@@ -106,6 +149,7 @@ app.post('/api/take/', (req,res)=>
         Task.findByIdAndUpdate(tId, {owner:user._id},(err,doc)=>{
             if (err)
                 throw err
+<<<<<<< HEAD
             console.log(doc);
             res.send('Task ' + doc.name + ' taken by ' + user.name )
         })
@@ -119,6 +163,9 @@ app.post('/api/release/', (req,res)=>
                 throw err
             console.log(doc);
             res.send('Task ' + doc.name + ' released by ' + user.name )
+=======
+            res.send('Task ' + doc.name + ' taken by ' + user._id )
+>>>>>>> 6c6ec4aa4eb47c058716461df2ebe6b9b3181692
         })
     })
 app.post('/api/delete/', (req,res)=>
@@ -152,7 +199,6 @@ function getUserTasks(user_id, callback) {
 // User pages
 app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
-    console.log(sesh.user)
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
         getUserTasks(sesh.user._id, (tasks) => {
             res.render('profile',{tasks: tasks, user:sesh.user})
