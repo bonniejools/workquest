@@ -4,7 +4,10 @@ const express = require('express'),
     mongo = require('mongodb').MongoClient,
     mongoose = require('mongoose'),
     hash  = require('sha256'),
-    session = require('express-session')
+    session = require('express-session'),
+    meka = require('./mekonix.js'),
+    items = require('./items.json')
+
 
 
 //Express set up
@@ -22,7 +25,15 @@ var User = mongoose.model('user',
         hash: String,
         xp:Number,
         gold: Number,
-        type: Number
+        type: Number,
+        gear:
+        {
+            helmet:Number,
+            legs:  Number,
+            gloves:Number,
+            chest: Number,
+            weapon:Number
+        }
     })
 var taskSchema = mongoose.Schema(
     {
@@ -100,7 +111,6 @@ app.post('/api/complete/', (req,res)=>
 app.post('/api/take/', (req,res)=>
     {
         var user = req.session.user
-        // var user = req.body.uId
         var tId = req.body.tId
         Task.findByIdAndUpdate(tId, {owner:user._id},(err,doc)=>{
             if (err)
@@ -139,6 +149,7 @@ function getUserTasks(user_id, callback) {
 // User pages
 app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
+    console.log(sesh.user)
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
         getUserTasks(sesh.user._id, (tasks) => {
             res.render('profile',{tasks: tasks, user:sesh.user})
@@ -217,14 +228,25 @@ app.post('/signup',(req,res)=>
         var pass = req.body.pass
         var name = req.body.name
 
-        var tmp = new User();
-        tmp.name = name
-        tmp.mail = mail
-        tmp.hash = hash(pass)
-        tmp.xp = 0
-        tmp.gold = 0
-        tmp.type = 0
+        var tmp = new User
+        ({
+            name : name,
+            mail : mail,
+            hash : hash(pass),
+            xp : 0,
+            gold : 0,
+            type : 0,
+            gear:{
+                helmet : meka.getItem('helmet1'),
+                legs   : meka.getItem('legs1'),
+                gloves : meka.getItem('gloves1'),
+                chest  : meka.getItem('chest1'),
+                weapon : meka.getItem('sword1')
+            }
+        });
+        console.log(tmp)
         tmp.save(()=>{
+            console.log(tmp)
             login(req, tmp,()=> res.redirect("/me"))
         })
     })
