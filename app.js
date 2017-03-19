@@ -125,10 +125,23 @@ function ensure(req,res,next)
 {
     var err = "User is not logged wtf"
     if(req.session.logged == true)
-        next()
+        sync(req,()=> next())
     else
         res.redirect("/")
     // throw err
+}
+function sync(req,callback)
+{
+    var mail = req.session.user.mail
+    User.findOne({mail:mail},(err,doc)=>
+        {
+            if(err)
+            {
+                throw err
+            }
+            req.session.user = doc
+            req.session.save(()=> callback())
+        })
 }
 
 app.get('/login', (req, res)=>
