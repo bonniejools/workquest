@@ -139,7 +139,7 @@ app.post('/api/add', (req,res)=>
                 })
         }
     })
-app.post('/api/complete/', (req,res)=>
+app.post('/api/complete/',ensure, (req,res)=>
     {
         var user = req.session.user
         var tId = req.body.tId
@@ -156,7 +156,7 @@ app.post('/api/complete/', (req,res)=>
         })
 
     })
-app.post('/api/take/', (req,res)=>
+app.post('/api/take/',ensure, (req,res)=>
     {
         var user = req.session.user
         var tId = req.body.tId
@@ -167,7 +167,7 @@ app.post('/api/take/', (req,res)=>
             res.send('Task ' + doc.name + ' taken by ' + user.name )
         })
     })
-app.post('/api/release/', (req,res)=>
+app.post('/api/release/',ensure, (req,res)=>
     {
         var user = req.session.user
         var tId = req.body.tId
