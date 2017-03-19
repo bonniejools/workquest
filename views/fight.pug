@@ -1,7 +1,9 @@
 extends base.pug
 
 block content
+  script= "var hp = "+user.hp + ";var dmg = "+ user.dmg+";var hp2 = "+opponent.hp + ";var dmg2 = "+ opponent.dmg
   h3 #{user.name} vs #{opponent.name}
+  script(src="/js/duel.js")
   #arena
     #user.player
       .hpbar

@@ -13,6 +13,10 @@ $flat-green: #66CC99;
 $flat-darkgreen: #26A65B;
 $tasklist-color: #ECF0F1;
 
+*{
+    -webkit-transition-duration:0.5s;
+}
+
 img {
     image-rendering: pixelated;
 }

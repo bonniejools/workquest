@@ -1,3 +1,6 @@
+* {
+  -webkit-transition-duration: 0.5s; }
+
 img {
   image-rendering: pixelated; }
 
