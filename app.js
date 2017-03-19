@@ -219,7 +219,7 @@ app.post('/api/upItem', (req,res)=>
         }
         else
         {
-            res.send("Not enough mula")
+            res.send("failed")
         }
 
     })

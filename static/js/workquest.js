@@ -120,3 +120,18 @@ setInterval(() => {
     setQuote();
 }, 10000);
 setQuote();
+
+$(".upgrade-button").click(function() {
+    var item_name = $(this).attr('item');
+    $.post('/api/upItem', {'piece': item_name},
+            (data) => {
+                if (data=="failed") {
+                    console.log("Failed to upgrade");
+                    return;
+                }
+                else {
+                    console.log(item_name + " upgrade :D");
+                }
+            });
+});
+
