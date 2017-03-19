@@ -14,8 +14,8 @@ block content
           each user in users
             tr
               td=user.name
-              td Level 9 God
-              td 12323
+              td=user.level()
+              td=user.xp
     .six.columns
       h3 New Task
       form#newTaskForm
@@ -47,10 +47,13 @@ block content
           th Task name
           th Status
           th XP value
+          th
       tbody
         each task in tasks
           tr
             td=task.name
             td=task.status()
             td=task.xp
+            td(task_id=task._id).taskDelete
+              i.fa.fa-times
 

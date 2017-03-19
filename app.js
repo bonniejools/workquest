@@ -80,7 +80,8 @@ var taskSchema = mongoose.Schema(
         gold:Number,
         owner:String,
         doneBy:String,
-        priority:Number
+        priority:Number,
+        completedAt:Date
     });
 // Task status
 taskSchema.methods.status = function() {
@@ -137,7 +138,7 @@ app.post('/api/complete/', (req,res)=>
     {
         var user = req.session.user
         var tId = req.body.tId
-        Task.findByIdAndUpdate(tId, {owner:1,doneBy:user._id},(err,doc)=>{
+        Task.findByIdAndUpdate(tId, {owner:1,doneBy:user._id,completedAt:+ new Date()},(err,doc)=>{
             if (err)
                 throw err
             var xp = doc.xp + user.xp

@@ -44,3 +44,9 @@ $("#newTaskForm").submit((e) => {
     return false;
 });
 
+$(".taskDelete").click( function() {
+    var task_id = $(this).attr('task_id');
+    $.post('/api/delete', {'tId': task_id}, (err,data)=>console.log(data));
+    $(this).parent().parent().remove();
+});
+
