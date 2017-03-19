@@ -130,6 +130,7 @@ app.get('/api/me', ensure,(req,res)=>
                 'xp': user.xp,
                 'gold': user.gold,
                 'type': user.type,
+                'levelClass': user.levelClass(),
                 'gear': {
                     'helmet': items[user.gear.helmet],
                     'chest': items[user.gear.chest],

@@ -4,7 +4,6 @@ $( function() {
               receive: (event, ui) => {
                   var task_id = ui.item.attr("task_id");
                   var moved_list = ui.item.parent().attr("list_name");
-                  console.log("Task number " + task_id + " moved to " + moved_list);
 
                   if (moved_list == "available") {
                       $.post( '/api/release/', {'tId': task_id},
@@ -24,7 +23,6 @@ $( function() {
 $("#newTaskForm").submit((e) => {
     var form = $(this);
     var data = $("#newTaskForm :input").serializeArray();
-    console.log(data);
 
     $.ajax({
         type: "POST",
@@ -138,8 +136,8 @@ function runAjaxUpdate() {
         $("#userHP").text(data.hp);
         $(".level").text(data.level);
         $(".xp-progress-text").text((data.xp % 100) + " / 100xp");
-
         $(".xp-current-progress").css("width", String(data.xp % 100) + "%");
+        $(".levelClass").attr("src", "/images/" + data.levelClass + ".jpg");
 
         // Update gear
         var helmet = $("#helmet");
