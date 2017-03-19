@@ -4,7 +4,10 @@ const express = require('express'),
     mongo = require('mongodb').MongoClient,
     mongoose = require('mongoose'),
     hash  = require('sha256'),
-    session = require('express-session')
+    session = require('express-session'),
+    meka = require('./mekonix.js'),
+    items = require('./items.json')
+
 
 
 //Express set up
@@ -22,7 +25,15 @@ var User = mongoose.model('user',
         hash: String,
         xp:Number,
         gold: Number,
-        type: Number
+        type: Number,
+        gear:
+        {
+            helmet:Number,
+            legs:  Number,
+            gloves:Number,
+            chest: Number,
+            weapon:Number
+        }
     })
 var Task = mongoose.model('task',
     {
@@ -85,8 +96,7 @@ app.post('/api/complete/', (req,res)=>
 
     })
 app.post('/api/take/', (req,res)=>
-    {
-        var user = req.session.user
+    { var user = req.session.user
         // var user = req.body.uId
         var tId = req.body.tId
         Task.findByIdAndUpdate(tId, {owner:user.id},(err,doc)=>{
@@ -109,7 +119,10 @@ app.post('/api/delete/', (req,res)=>
 // User pages
 app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
+    console.log(sesh.user)
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
+        if(err)
+            throw err
         console.log(sesh.user)
         res.render('profile',{user:sesh.user})
     })
@@ -186,14 +199,25 @@ app.post('/signup',(req,res)=>
         var pass = req.body.pass
         var name = req.body.name
 
-        var tmp = new User();
-        tmp.name = name
-        tmp.mail = mail
-        tmp.hash = hash(pass)
-        tmp.xp = 0
-        tmp.gold = 0
-        tmp.type = 0
+        var tmp = new User
+        ({
+            name : name,
+            mail : mail,
+            hash : hash(pass),
+            xp : 0,
+            gold : 0,
+            type : 0,
+            gear:{
+                helmet : 1,
+                legs   : 1,
+                gloves : 1,
+                chest  : 1,
+                weapon : 1
+            }
+        });
+        console.log(tmp)
         tmp.save(()=>{
+            console.log(tmp)
             login(req, tmp,()=> res.redirect("/me"))
         })
     })
