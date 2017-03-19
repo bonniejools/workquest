@@ -107,9 +107,10 @@ app.get('/me', ensure ,(req,res)=>{
 })
 
 app.get('/manage', (req, res)=>{
-    User.find(function(err, users) {
-        console.log(users);
-        res.render('manage', {users: users});
+    User.find((err, users) => {
+        Task.find((err, tasks) => {
+            res.render('manage', {tasks: tasks, users: users});
+        });
     });
 });
 

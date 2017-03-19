@@ -36,7 +36,7 @@
         "type":"sword",
 	"tier":5, 
         "damage":80, 
-        "cost":1600,
+        "cost":0,
 	"src":"Item__07.png"
     },
     {
@@ -68,7 +68,7 @@
         "type":"helmet",
         "tier":4,
         "hp":80,
-        "cost":800,
+        "cost":0,
         "src":"Item__47.png"
     },
     {
@@ -100,7 +100,7 @@
         "type":"glove",
         "tier":4,
         "hp":800,
-        "cost":800,
+        "cost":0,
         "src":"Item__63.png"
     },
     {
@@ -132,7 +132,7 @@
         "type":"chest",
         "tier":4,
         "hp":120,
-        "cost":1200,
+        "cost":0,
         "src":"Item__59.png"
     },
     {
@@ -164,7 +164,7 @@
         "type":"legs",
         "tier":4,
         "hp":80,
-        "cost":800,
+        "cost":0,
         "src":"Item__50.png"
     }
 ]
