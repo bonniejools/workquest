@@ -18,24 +18,24 @@ block content
               td 12323
     .six.columns
       h3 New Task
-      form(action='/singup' method='post')
+      form#newTaskForm
         .row
           label Task Name
-          input.u-full-width(type='email', name='task_name')
+          input.u-full-width(type='text', name='name')
         .row
           .six.columns
             label Number of hours
-            input.u-full-width(type='number', name='num_hours')
+            input.u-full-width(type='number', name='hours')
           .six.columns
             label Priority
             span.priority-level
-              input(type='radio', name='priority')
+              input(type='radio', value='0' name='priority')
               span Low
             span.priority-level
-              input(type='radio', name='priority' checked='checked')
+              input(type='radio', value='1' name='priority' checked='checked')
               span Normal
             span.priority-level
-              input(type='radio', name='priority')
+              input(type='radio', value='2' name='priority')
               span High
         .row
           input.u-full-width.button-primary(type='submit')
