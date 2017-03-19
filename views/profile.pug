@@ -18,13 +18,13 @@ block content
           #stats
             .stat
               img(src='/assets/Item__40.png')
-              span=user.gold
+              span#userGOLD=user.gold
             .stat
               img(src='/assets/Item__05.png')
-              span=user.dmg()
+              span#userDMG=user.dmg()
             .stat
               img(src='/assets/Item__25.png')
-              span=user.hp()
+              span#userHP=user.hp()
         .row#gear
           .item#helmet
             - var imgsrc = "/assets/" + items[user.gear.helmet].src

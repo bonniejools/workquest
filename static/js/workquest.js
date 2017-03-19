@@ -8,13 +8,13 @@ $( function() {
 
                   if (moved_list == "available") {
                       $.post( '/api/release/', {'tId': task_id},
-                              (data) => console.log(data))
+                          (data) => { console.log(data); runAjaxUpdate();});
                   } else if (moved_list == "current") {
                       $.post( '/api/take/', {'tId': task_id},
-                              (data) => console.log(data))
+                          (data) => { console.log(data); runAjaxUpdate();});
                   } else if (moved_list == "finished") {
                       $.post( '/api/complete/', {'tId': task_id},
-                              (data) => console.log(data))
+                          (data) => { console.log(data); runAjaxUpdate();});
                   }
               }
       }).disableSelection();
@@ -112,6 +112,10 @@ setQuote();
 
 $(".upgrade-button").click(function() {
     var item_name = $(this).attr('item');
+    if ($(this).text() == "Max") {
+        console.log("Can't upgrade maxed out");
+        return;
+    }
     $.post('/api/upItem', {'piece': item_name},
             (data) => {
                 if (data=="failed") {
@@ -120,8 +124,38 @@ $(".upgrade-button").click(function() {
                 }
                 else {
                     console.log(item_name + " upgrade :D");
-                    location.reload();
+                    runAjaxUpdate();
                 }
             });
 });
+
+// Calls /api/me and runs an update of variables
+function runAjaxUpdate() {
+    $.get('/api/me',(data)=> {
+        console.log(data);
+        $("#userGOLD").text(data.gold);
+        $("#userDMG").text(data.dmg);
+        $("#userHP").text(data.hp);
+        $(".level").text(data.level);
+        $(".xp-progress-text").text((data.xp % 100) + " / 100xp");
+
+        // Update gear
+        var helmet = $("#helmet");
+        helmet.find("img").attr('src', "/assets/" + data.gear.helmet.src);
+        helmet.find(".upgrade-button").text(data.gear.helmet.cost == 0 ? "Max" : data.gear.helmet.cost);
+        var legs = $("#legs");
+        legs.find("img").attr('src', "/assets/" + data.gear.legs.src);
+        legs.find(".upgrade-button").text(data.gear.legs.cost == 0 ? "Max" : data.gear.legs.cost);
+        var gloves = $("#gloves");
+        gloves.find("img").attr('src', "/assets/" + data.gear.gloves.src);
+        gloves.find(".upgrade-button").text(data.gear.gloves.cost == 0 ? "Max" : data.gear.gloves.cost);
+        var chest = $("#chest");
+        chest.find("img").attr('src', "/assets/" + data.gear.chest.src);
+        chest.find(".upgrade-button").text(data.gear.chest.cost == 0 ? "Max" : data.gear.chest.cost);
+        var weapon = $("#weapon");
+        weapon.find("img").attr('src', "/assets/" + data.gear.weapon.src);
+        weapon.find(".upgrade-button").text(data.gear.weapon.cost == 0 ? "Max" : data.gear.weapon.cost);
+    });
+
+}
 
