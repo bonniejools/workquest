@@ -1,8 +1,9 @@
 
 var items = require('./items.json')
 
-function levelUp (exp){
-    var level = Math.floor(exp/100);
+function getLevel(exp){
+    // Increased by one so level is not zero
+    var level = Math.floor(exp/100) + 1;
     return level;
 }
 
@@ -46,19 +47,5 @@ function getItem(name)
     return tmp
 }
 
-function fight (stats1, stats2){
-    var hp1 = stats1.hp;
-    var dmg2 = stats2.dmg;
-    var tmpHp1 = loseHealth(hp1, dmg2);
-    var hp2 = stats2.hp;
-    var dmg1 = stats1.dmg;
-    var tmpHp2 = loseHealth(hp2, dmg1);
-    return [{tmpHp1},{tmpHp2}];
-}
+module.exports = {getLevel, upgrade, canUpgrade, getItem}
 
-function loseHealth (hp, dmg) {
-    hp -= dmg;
-    return hp;
-}
-
-module.exports = {levelUp, upgrade, canUpgrade, getItem}
