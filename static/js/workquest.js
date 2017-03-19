@@ -6,15 +6,13 @@ $( function() {
                   var moved_list = ui.item.parent().attr("list_name");
                   console.log("Task number " + task_id + " moved to " + moved_list);
 
-                  if (moved_list = "avaliable") {
+                  if (moved_list == "available") {
                       $.post( '/api/release/', {'tId': task_id},
                               (data) => console.log(data))
-                  }
-                  if (moved_list = "current") {
+                  } else if (moved_list == "current") {
                       $.post( '/api/take/', {'tId': task_id},
                               (data) => console.log(data))
-                  }
-                  if (moved_list = "complete") {
+                  } else if (moved_list == "complete") {
                       $.post( '/api/complete/', {'tId': task_id},
                               (data) => console.log(data))
                   }
@@ -47,21 +45,9 @@ $("#newTaskForm").submit((e) => {
 $(".taskDelete").click( function() {
     var task_id = $(this).attr('task_id');
     $.post('/api/delete', {'tId': task_id}, (err,data)=>console.log(data));
-    $(this).parent().parent().remove();
+    $(this).parent().remove();
 });
 
-function upHelmet()
-{
-    $.ajax({
-        type: "POST",
-        url: '/api/upItem',
-        data: {
-            'piece': 'legs'
-        },
-        success: (data, status, jqXHR) => {console.log(data); location.reload()}
-    });
-
-}
 var quotes = {
     'peasant': [
         "It's a simple life but a rewarding life",
