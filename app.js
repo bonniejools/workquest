@@ -8,8 +8,6 @@ const express = require('express'),
     meka = require('./mekonix.js'),
     items = require('./items.json')
 
-
-
 //Express set up
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.set('view engine', 'pug')
@@ -35,6 +33,19 @@ var userSchema = mongoose.Schema(
             weapon:Number
         }
     })
+userSchema.methods.dmg = function()
+{
+    var dmg = items[this.gear.weapon].damage
+    return dmg 
+}
+userSchema.methods.hp = function()
+{
+    var hp = items[this.gear.helmet].hp +
+             items[this.gear.legs].hp +
+             items[this.gear.gloves].hp +
+             items[this.gear.chest].hp
+    return hp
+}
 
 function levelClass(level) {
     if (level < 5) {
@@ -135,9 +146,13 @@ app.post('/api/complete/', (req,res)=>
         Task.findByIdAndUpdate(tId, {owner:1,doneBy:user._id,completedAt:+ new Date()},(err,doc)=>{
             if (err)
                 throw err
-            var xp = doc.xp
-            var gold = doc.gold
-            res.send('Task ' + doc.name + ' completed by ' + user._id)
+            var xp = doc.xp + user.xp
+            var gold = doc.gold + user.gold
+
+            User.findByIdAndUpdate(user._id,{gold:gold,xp:xp},(doc2)=>
+                {
+                    res.send('Task ' + doc.name + ' completed by ' + user.name)
+                })
         })
 
     })
@@ -145,10 +160,22 @@ app.post('/api/take/', (req,res)=>
     {
         var user = req.session.user
         var tId = req.body.tId
-        Task.findByIdAndUpdate(tId, {owner:user._id},(err,doc)=>{
+        Task.findByIdAndUpdate(tId, {owner:user._id,doneBy:0},(err,doc)=>{
             if (err)
                 throw err
-            res.send('Task ' + doc.name + ' taken by ' + user._id )
+            console.log(doc);
+            res.send('Task ' + doc.name + ' taken by ' + user.name )
+        })
+    })
+app.post('/api/release/', (req,res)=>
+    {
+        var user = req.session.user
+        var tId = req.body.tId
+        Task.findByIdAndUpdate(tId, {owner:0,doneBy:0},(err,doc)=>{
+            if (err)
+                throw err
+            console.log(doc);
+            res.send('Task ' + doc.name + ' released by ' + user.name )
         })
     })
 app.post('/api/delete/', (req,res)=>
