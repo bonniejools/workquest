@@ -149,7 +149,6 @@ app.post('/api/take/', (req,res)=>
         Task.findByIdAndUpdate(tId, {owner:user._id},(err,doc)=>{
             if (err)
                 throw err
-<<<<<<< HEAD
             console.log(doc);
             res.send('Task ' + doc.name + ' taken by ' + user.name )
         })
@@ -163,9 +162,6 @@ app.post('/api/release/', (req,res)=>
                 throw err
             console.log(doc);
             res.send('Task ' + doc.name + ' released by ' + user.name )
-=======
-            res.send('Task ' + doc.name + ' taken by ' + user._id )
->>>>>>> 6c6ec4aa4eb47c058716461df2ebe6b9b3181692
         })
     })
 app.post('/api/delete/', (req,res)=>
