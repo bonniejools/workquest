@@ -33,8 +33,7 @@ img {
   background-color: #BDC3C7; }
   .user-stats #xp-progress .xp-current-progress {
     height: 0.7em;
-    background-color: #26A65B;
-    width: 30%; }
+    background-color: #26A65B; }
 .user-stats .level {
   margin-left: 0.3em;
   font-size: 0.6em;

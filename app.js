@@ -176,7 +176,6 @@ function getUserTasks(user_id, callback) {
 // User pages
 app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
-    console.log(sesh.user)
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
         getUserTasks(sesh.user._id, (tasks) => {
             res.render('profile',{tasks: tasks, user:sesh.user})
