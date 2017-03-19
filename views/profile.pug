@@ -5,7 +5,7 @@ block content
     .six.columns.user-stats
       .four.columns
         - var image_loc = "/images/" + user.levelClass() + ".jpg";
-        img(src=image_loc)
+        img.levelClass(src=image_loc)
         - var pprogress = "width:" + String(user.xp % 100) + "%";
         #xp-progress
           .xp-current-progress(style=pprogress)

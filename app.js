@@ -130,6 +130,7 @@ app.get('/api/me', ensure,(req,res)=>
                 'xp': user.xp,
                 'gold': user.gold,
                 'type': user.type,
+                'levelClass': user.levelClass(),
                 'gear': {
                     'helmet': items[user.gear.helmet],
                     'chest': items[user.gear.chest],
@@ -227,7 +228,7 @@ app.post('/api/upItem', (req,res)=>
         console.log(item)
         var newItem = items.indexOf(meka.canUpgrade(user.gold,item).item)
         console.log(newItem)
-        if(meka.canUpgrade(user.gold, item).gold > 0)
+        if(meka.canUpgrade(user.gold, item).gold >= 0)
         {
             User.findByIdAndUpdate(user._id, {gold:meka.canUpgrade(user.gold, item).gold},(doc)=>{
                 var string = 'gear.' + req.body.piece
