@@ -60,6 +60,7 @@ var quotes = {
     'merchant': [
         "I look down on the Peasants",
         "Mo' money, mo' problems",
+        "I come a long way since my Java days",
         "Those knights think they're so great...",
         "It's a lot of work running a business"
     ],
@@ -78,6 +79,7 @@ var quotes = {
         "I look down on the Nobles",
         "That awkward moment when you kill all your wives :/",
         "Where did I leave my crown",
+        "Maybe I should learn Haskell",
         "It's good to be king",
         "I need an heir to my thrown",
         "I wonder if I can just start my own church..."
@@ -86,6 +88,7 @@ var quotes = {
         "Mongo.db is webscale",
         "/dev/null supports sharding",
         "I prefer functional programming languages",
+        "I finally understand Monads",
         "Life is like a box of chocolates",
         "I have reached levels of productivity previously unheard of"
     ]
