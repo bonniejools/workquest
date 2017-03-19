@@ -45,10 +45,12 @@ block content
       thead
         tr
           th Task name
-          th Number of hours
+          th Status
+          th XP value
       tbody
         each task in tasks
           tr
             td=task.name
+            td=task.status()
             td=task.xp
 

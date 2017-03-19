@@ -24,7 +24,7 @@ var User = mongoose.model('user',
         gold: Number,
         type: Number
     })
-var Task = mongoose.model('task',
+var taskSchema = mongoose.Schema(
     {
         name:String,
         xp:Number,
@@ -32,7 +32,20 @@ var Task = mongoose.model('task',
         owner:String,
         doneBy:String,
         priority:Number
-    })
+    });
+
+// Task status
+taskSchema.methods.status = function() {
+    if (this.owner == 0) {
+        return "Available";
+    }
+    if (this.doneBy != 0) {
+        return "Completed by " + this.doneBy;
+    }
+    return "Owned by " + this.owner;
+}
+
+var Task = mongoose.model('task', taskSchema);
 
 // app.get('/view/',(req,res)=>{
 //     User.find({},(err,users)=>
@@ -87,13 +100,11 @@ app.post('/api/complete/', (req,res)=>
 app.post('/api/take/', (req,res)=>
     {
         var user = req.session.user
-        console.log(user);
         // var user = req.body.uId
         var tId = req.body.tId
         Task.findByIdAndUpdate(tId, {owner:user._id},(err,doc)=>{
             if (err)
                 throw err
-            console.log(doc);
             res.send('Task ' + doc.name + ' taken by ' + user._id )
         })
     })
