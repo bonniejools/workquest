@@ -5,6 +5,12 @@ $( function() {
                   var task_id = ui.item.attr("task_id");
                   var moved_list = ui.item.parent().attr("list_name");
                   console.log("Task number " + task_id + " moved to " + moved_list);
+
+                  if (moved_list = "current") {
+                      $.post( '/api/take',
+                              {'tId': task_id},
+                              (data) => console.log(data))
+                  }
               }
       }).disableSelection();
 

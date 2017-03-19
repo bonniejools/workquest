@@ -92,6 +92,7 @@ app.post('/api/take/', (req,res)=>
         Task.findByIdAndUpdate(tId, {owner:user.id},(err,doc)=>{
             if (err)
                 throw err
+            console.log(doc);
             res.send('Task ' + doc.name + ' taken by ' + user.id )
         })
     })
@@ -105,13 +106,31 @@ app.post('/api/delete/', (req,res)=>
         })
     })
 
+// Return an object returning three lists of tasks for the user
+// (available, current and finished)
+function getUserTasks(user_id, callback) {
+    Task.find({"owner": 0 }, function(err, available_tasks) {
+        Task.find({"owner": user_id }, function(err, current_tasks) {
+            Task.find({"doneBy": user_id }, function(err, done_tasks) {
+            var tasks = {
+                'available': available_tasks,
+                'current':   current_tasks,
+                'done':      done_tasks
+            };
+            callback(tasks);
+            });
+        });
+    });
+}
+
 // End of api stuff
 // User pages
 app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
-        console.log(sesh.user)
-        res.render('profile',{user:sesh.user})
+        getUserTasks(sesh.user._id, (tasks) => {
+            res.render('profile',{tasks: tasks, user:sesh.user})
+        });
     })
 })
 

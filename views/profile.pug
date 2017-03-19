@@ -40,16 +40,22 @@ block content
     .four.columns.tasklist
       .tasktitle Available
       ul.tasks(list_name="available")
-        li(task_id="1") Make templates
-        li(task_id="2") Make login
-        li(task_id="3") Download assets
-        li(task_id="4") Win the MHR £2000 award
+        each task in tasks.available
+          li(task_id=task._id)
+            span.task_name=task.name
+            span.task_reward=task.xp
     .four.columns.tasklist
       .tasktitle Current
       ul.tasks(list_name="current")
-        li(task_id="5") Move lists
+        each task in tasks.current
+          li(task_id=task._id)
+            span.task_name=task.name
+            span.task_reward=task.xp
     .four.columns.tasklist
       .tasktitle Finished
       ul.tasks.tasks-finished(list_name="finished")
-        li(task_id="6") Line through
+        each task in tasks.done
+          li(task_id=task._id)
+            span.task_name=task.name
+            span.task_reward=task.xp
 

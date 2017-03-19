@@ -84,6 +84,10 @@ img {
         line-height: 4em; }
         .tasklists .tasklist ul.tasks li .fa {
           padding-right: 1em; }
+        .tasklists .tasklist ul.tasks li .task_reward {
+          color: #999;
+          float: right;
+          font-size: 0.9em; }
       .tasklists .tasklist ul.tasks.tasks-finished {
         text-decoration: line-through; }
 
