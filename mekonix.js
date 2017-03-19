@@ -24,6 +24,7 @@ function upgrade (item) {
 
 function canUpgrade (gold, item){
     var needToPay = items[item].cost;
+    var newItem = item;
     if (gold >= needToPay) {
         var newItem = upgrade(item);
         gold -= needToPay;
