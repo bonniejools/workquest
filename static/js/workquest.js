@@ -12,7 +12,7 @@ $( function() {
                   } else if (moved_list == "current") {
                       $.post( '/api/take/', {'tId': task_id},
                               (data) => console.log(data))
-                  } else if (moved_list == "complete") {
+                  } else if (moved_list == "finished") {
                       $.post( '/api/complete/', {'tId': task_id},
                               (data) => console.log(data))
                   }
