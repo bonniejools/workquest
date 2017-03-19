@@ -227,7 +227,7 @@ app.post('/api/upItem', (req,res)=>
         console.log(item)
         var newItem = items.indexOf(meka.canUpgrade(user.gold,item).item)
         console.log(newItem)
-        if(meka.canUpgrade(user.gold, item).gold > 0)
+        if(meka.canUpgrade(user.gold, item).gold >= 0)
         {
             User.findByIdAndUpdate(user._id, {gold:meka.canUpgrade(user.gold, item).gold},(doc)=>{
                 var string = 'gear.' + req.body.piece
