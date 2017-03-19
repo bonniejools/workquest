@@ -14,16 +14,20 @@ block content
       .eight.columns
         h3=user.name
           span.level=user.level()
-        #stats
-          .stat
-            img(src='/assets/Item__40.png')
-            span=user.gold
-          .stat
-            img(src='/assets/Item__05.png')
-            span=user.dmg()
-          .stat
-            img(src='/assets/Item__25.png')
-            span=user.hp()
+        .row
+          #stats
+            .stat
+              img(src='/assets/Item__40.png')
+              span=user.gold
+            .stat
+              img(src='/assets/Item__05.png')
+              span=user.dmg()
+            .stat
+              img(src='/assets/Item__25.png')
+              span=user.hp()
+        .row
+          #quote-container
+            #quote(levelClass=user.levelClass())
     .six.columns
       table.u-full-width
         thead

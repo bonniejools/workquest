@@ -50,3 +50,61 @@ $(".taskDelete").click( function() {
     $(this).parent().parent().remove();
 });
 
+var quotes = {
+    'peasant': [
+        "It's a simple life but a rewarding life",
+        "I hope my potatoes don't die again",
+        "I wish I wasn't so ugly",
+        "Those knights are so mean",
+        "I have only eaten soup for the last three months",
+        "I wish my bread wasn't always moldy"
+    ],
+    'merchant': [
+        "I look down on the Peasants",
+        "Mo' money, mo' problems",
+        "Those knights think they're so great...",
+        "It's a lot of work running a business"
+    ],
+    'knight': [
+        "I look down on the Merchants",
+        "Life is good",
+        "I wish people would call me Sir. more often",
+        "Where did that chambermaid go?"
+    ],
+    'nobleman': [
+        "I look down on the Knights",
+        "I am looking for an eligible husband for my daughter",
+        "I hope the peasants still look up to me"
+    ],
+    'king': [
+        "I look down on the Nobles",
+        "That awkward moment when you kill all your wives :/",
+        "Where did I leave my crown",
+        "It's good to be king",
+        "I need an heir to my thrown",
+        "I wonder if I can just start my own church..."
+    ],
+    'enlightenedone': [
+        "Mongo.db is webscale",
+        "/dev/null supports sharding",
+        "I prefer functional programming languages",
+        "Life is like a box of chocolates",
+        "I have reached levels of productivity previously unheard of"
+    ]
+}
+
+
+function setQuote() {
+    $("#quote").fadeOut(1000, ()=> {
+        var levelClass = $("#quote").attr('levelClass');
+        var quoteList = quotes[levelClass];
+        var random_quote = quoteList[Math.floor(Math.random()*quoteList.length)];
+        $("#quote").text(random_quote);
+        $("#quote").fadeIn(1000);
+    });
+}
+
+setInterval(() => {
+    setQuote();
+}, 10000);
+setQuote();

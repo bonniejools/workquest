@@ -40,6 +40,19 @@ img {
   color: #999;
   float: right;
   line-height: 2.5em; }
+.user-stats #quote-container {
+  width: 100%;
+  height: 1em;
+  background-color: #ECF0F1;
+  border: 1em solid #ECF0F1;
+  border-radius: 1em; }
+.user-stats #quote {
+  font-weight: bold;
+  line-height: 1em; }
+  .user-stats #quote::before {
+    content: "\""; }
+  .user-stats #quote::after {
+    content: "\""; }
 .user-stats #stats .stat {
   width: 8em;
   display: inline-block;
