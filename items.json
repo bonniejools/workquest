@@ -99,7 +99,7 @@
         "name":"gloves4",
         "type":"glove",
         "tier":4,
-        "hp":800,
+        "hp":80,
         "cost":0,
         "src":"Item__63.png"
     },
