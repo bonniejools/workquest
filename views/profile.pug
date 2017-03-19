@@ -14,16 +14,41 @@ block content
       .eight.columns
         h3=user.name
           span.level=user.level()
-        #stats
-          .stat
-            img(src='/assets/Item__40.png')
-            span=user.gold
-          .stat
-            img(src='/assets/Item__05.png')
-            span=user.dmg()
-          .stat
-            img(src='/assets/Item__25.png')
-            span=user.hp()
+        .row
+          #stats
+            .stat
+              img(src='/assets/Item__40.png')
+              span=user.gold
+            .stat
+              img(src='/assets/Item__05.png')
+              span=user.dmg()
+            .stat
+              img(src='/assets/Item__25.png')
+              span=user.hp()
+        .row#gear
+          .item#helmet
+            - var imgsrc = "/assets/" + items[user.gear.helmet].src
+            img(src=imgsrc)
+            .upgrade-button=items[user.gear.helmet].cost
+          .item#chest
+            - var imgsrc = "/assets/" + items[user.gear.chest].src
+            img(src=imgsrc)
+            .upgrade-button=items[user.gear.chest].cost
+          .item#gloves
+            - var imgsrc = "/assets/" + items[user.gear.gloves].src
+            img(src=imgsrc)
+            .upgrade-button=items[user.gear.gloves].cost
+          .item#weapon
+            - var imgsrc = "/assets/" + items[user.gear.weapon].src
+            img(src=imgsrc)
+            .upgrade-button=items[user.gear.weapon].cost
+          .item#legs
+            - var imgsrc = "/assets/" + items[user.gear.legs].src
+            img(src=imgsrc)
+            .upgrade-button=items[user.gear.legs].cost
+        .row
+          #quote-container
+            #quote(levelClass=user.levelClass())
     .six.columns
       table.u-full-width
         thead

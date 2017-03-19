@@ -247,7 +247,7 @@ app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
         getUserTasks(sesh.user._id, (tasks) => {
-            res.render('profile',{tasks: tasks, user:sesh.user})
+            res.render('profile',{tasks: tasks, user:sesh.user, items: items})
         });
     })
 })

@@ -49,9 +49,36 @@ img {
     }
 }
 
+$bg-color: #2ECC71;
 .user-stats {
     img {
         width: 100%;
+    }
+
+    #gear {
+        margin-bottom: 1em;
+
+        .item {
+            display: inline-block;
+            width: 3em;
+            height: 3em;
+            text-align: center;
+            margin-right: 0.8em;
+
+            .upgrade-button {
+                background-color: $flat-green;
+                cursor: pointer;
+                margin-top: 0.2em;
+                border: 0.2em solid $flat-green;
+                border-radius: 0.2em;
+                width: 100%;
+
+                &:hover {
+                    background-color: #2ECC71;
+                    border: 0.2em solid #2ECC71;
+                }
+            }
+        }
     }
 
     .xp-progress-text {
@@ -76,6 +103,26 @@ img {
         color: #999;
         float: right;
         line-height: 2.5em;
+    }
+
+    #quote-container {
+        width: 100%;
+        height: 1em;
+        background-color: $tasklist-color;
+        border: 1em solid $tasklist-color;
+        border-radius: 1em;
+    }
+
+    #quote {
+        font-weight: bold;
+        line-height: 1em;
+        &::before {
+            content: "\"";
+        }
+        &::after {
+            content: "\"";
+        }
+
     }
 
     #stats {
