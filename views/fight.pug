@@ -5,9 +5,10 @@ block content
   #arena
     #user.player
       .hpbar
-        .health
+        #userHealth.health
       .name=user.name
-      img.classimage(src="/images/"+user.levelClass()+".jpg")
+      .xp=user.xp
+      img.classimage(src="/images/"+user.pic+".jpg")
       #gear
         .item#helmet
           - var imgsrc = "/assets/" + items[user.gear.helmet].src
@@ -26,9 +27,10 @@ block content
           img(src=imgsrc)
     #opponent.player
       .hpbar
-        .health
+        #opponentHealth.health
       .name=opponent.name
-      img.classimage(src="/images/"+opponent.levelClass()+".jpg")
+      .xp=opponent.xp
+      img.classimage(src="/images/"+opponent.pic+".jpg")
 
       #gear
         .item#helmet

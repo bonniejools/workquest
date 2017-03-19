@@ -7,7 +7,7 @@ const express = require('express'),
     session = require('express-session'),
     meka = require('./mekonix.js'),
     items = require('./items.json')
-    url = require('url')
+url = require('url')
 
 //Express set up
 app.use(require('body-parser').urlencoded({ extended: true }));
@@ -298,26 +298,29 @@ app.get('/duel/:id',ensure ,(req,res)=>
             {
                 if(err)
                     throw err
-                var user = req.session.user
-                var nUser = 
+                var enemy =
                     {
-                        name:user.name, 
-                        xp : user.xp,
-                        dmg : getDamage(user), 
-                        hp : getHp(user),
-                        gear : user.gear
-                        
-                    }
-                var enemy = 
-                    {
-                        name:doc.name, 
+                        name:doc.name,
                         xp : doc.xp,
                         dmg : doc.dmg(),
                         hp : doc.hp(),
-                        gear : doc.gear
+                        gear : doc.gear,
+                        pic : doc.levelClass()
                     }
-                var string = nUser.dmg + enemy.dmg
-                res.send(string)
+                User.findById(req.session.user._id, (err,doc2)=>{
+                    var nuser =
+                        {
+                            name:doc2.name,
+                            xp : doc2.xp,
+                            dmg : doc2.dmg(),
+                            hp : doc2.hp(),
+                            gear : doc2.gear,
+                            pic : doc2.levelClass()
+                        }
+                    var string = nuser// + enemy
+                    console.log(nuser.gear)
+                    res.render('fight', {user:nuser, opponent:enemy,items:items})
+                })
             })
     })
 
