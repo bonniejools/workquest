@@ -1,6 +1,7 @@
 [
     {
 	"name":"sword1", 
+        "type":"sword",
 	"tier":1, 
         "damage":5, 
         "cost":100,
@@ -8,6 +9,7 @@
     },
     {
 	"name":"sword2", 
+        "type":"sword",
 	"tier":2, 
         "damage":10, 
         "cost":200,
@@ -15,6 +17,7 @@
     },
     {
 	"name":"sword3", 
+        "type":"sword",
 	"tier":3, 
         "damage":20, 
         "cost":400,
@@ -22,6 +25,7 @@
     },
     {
 	"name":"sword4", 
+        "type":"sword",
 	"tier":4, 
         "damage":40, 
         "cost":800,
@@ -29,13 +33,15 @@
     },
     {
 	"name":"sword5", 
+        "type":"sword",
 	"tier":5, 
         "damage":80, 
-        "cost":1600,
+        "cost":0,
 	"src":"Item__07.png"
     },
     {
         "name":"helmet1",
+        "type":"helmet",
         "tier":1,
         "hp":10,
         "cost":100,
@@ -43,6 +49,7 @@
     },
     {
         "name":"helmet2",
+        "type":"helmet",
         "tier":2,
         "hp":20,
         "cost":200,
@@ -50,6 +57,7 @@
     },
     {
         "name":"helmet3",
+        "type":"helmet",
         "tier":3,
         "hp":40,
         "cost":400,
@@ -57,13 +65,15 @@
     },
     {
         "name":"helmet4",
+        "type":"helmet",
         "tier":4,
         "hp":80,
-        "cost":800,
+        "cost":0,
         "src":"Item__47.png"
     },
     {
         "name":"gloves1",
+        "type":"glove",
         "tier":1,
         "hp":10,
         "cost":100,
@@ -71,6 +81,7 @@
     },
     {
         "name":"gloves2",
+        "type":"glove",
         "tier":2,
         "hp":20,
         "cost":200,
@@ -78,6 +89,7 @@
     },
     {
         "name":"gloves3",
+        "type":"glove",
         "tier":3,
         "hp":40,
         "cost":400,
@@ -85,13 +97,15 @@
     },
     {
         "name":"gloves4",
+        "type":"glove",
         "tier":4,
         "hp":800,
-        "cost":800,
+        "cost":0,
         "src":"Item__63.png"
     },
     {
         "name":"chest1",
+        "type":"chest",
         "tier":1,
         "hp":15,
         "cost":150,
@@ -99,6 +113,7 @@
     },
     {
         "name":"chest2",
+        "type":"chest",
         "tier":2,
         "hp":30,
         "cost":300,
@@ -106,6 +121,7 @@
     },
     {
         "name":"chest3",
+        "type":"chest",
         "tier":3,
         "hp":60,
         "cost":600,
@@ -113,13 +129,15 @@
     },
     {
         "name":"chest4",
+        "type":"chest",
         "tier":4,
         "hp":120,
-        "cost":1200,
+        "cost":0,
         "src":"Item__59.png"
     },
     {
         "name":"legs1",
+        "type":"legs",
         "tier":1,
         "hp":10,
         "cost":100,
@@ -127,6 +145,7 @@
     },
     {
         "name":"legs2",
+        "type":"legs",
         "tier":2,
         "hp":20,
         "cost":200,
@@ -134,6 +153,7 @@
     },
     {
         "name":"legs3",
+        "type":"legs",
         "tier":3,
         "hp":40,
         "cost":400,
@@ -141,9 +161,10 @@
     },
     {
         "name":"legs4",
+        "type":"legs",
         "tier":4,
         "hp":80,
-        "cost":800,
+        "cost":0,
         "src":"Item__50.png"
     }
 ]
