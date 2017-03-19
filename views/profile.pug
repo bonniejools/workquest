@@ -29,23 +29,38 @@ block content
           .item#helmet
             - var imgsrc = "/assets/" + items[user.gear.helmet].src
             img(src=imgsrc)
-            .upgrade-button(item="helmet")=items[user.gear.helmet].cost
+            if items[user.gear.helmet].cost != 0
+                .upgrade-button(item="helmet")=items[user.gear.helmet].cost
+            else
+                .upgrade-button Max
           .item#chest
             - var imgsrc = "/assets/" + items[user.gear.chest].src
             img(src=imgsrc)
-            .upgrade-button(item="chest")=items[user.gear.chest].cost
+            if items[user.gear.chest].cost != 0
+                .upgrade-button(item="chest")=items[user.gear.chest].cost
+            else
+                .upgrade-button Max
           .item#gloves
             - var imgsrc = "/assets/" + items[user.gear.gloves].src
             img(src=imgsrc)
-            .upgrade-button(item="gloves")=items[user.gear.gloves].cost
+            if items[user.gear.gloves].cost != 0
+                .upgrade-button(item="gloves")=items[user.gear.gloves].cost
+            else
+                .upgrade-button Max
           .item#weapon
             - var imgsrc = "/assets/" + items[user.gear.weapon].src
             img(src=imgsrc)
-            .upgrade-button(item="weapon")=items[user.gear.weapon].cost
+            if items[user.gear.weapon].cost != 0
+                .upgrade-button(item="weapon")=items[user.gear.weapon].cost
+            else
+                .upgrade-button Max
           .item#legs
             - var imgsrc = "/assets/" + items[user.gear.legs].src
             img(src=imgsrc)
-            .upgrade-button(item="legs")=items[user.gear.legs].cost
+            if items[user.gear.legs].cost != 0
+                .upgrade-button(item="legs")=items[user.gear.legs].cost
+            else
+                .upgrade-button Max
         .row
           #quote-container
             #quote(levelClass=user.levelClass())

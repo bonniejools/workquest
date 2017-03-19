@@ -36,26 +36,26 @@ var userSchema = mongoose.Schema(
 userSchema.methods.dmg = function()
 {
     var dmg = items[this.gear.weapon].damage
-    return dmg 
+    return dmg
 }
 userSchema.methods.hp = function()
 {
     var hp = items[this.gear.helmet].hp +
-             items[this.gear.legs].hp +
-             items[this.gear.gloves].hp +
-             items[this.gear.chest].hp
+        items[this.gear.legs].hp +
+        items[this.gear.gloves].hp +
+        items[this.gear.chest].hp
     return hp
 }
 function getDamage(thing){
     var dmg = items[thing.gear.weapon].damage
-    return dmg 
+    return dmg
 }
 function getHp(thing)
 {
     var hp = items[thing.gear.helmet].hp +
-             items[thing.gear.legs].hp +
-             items[thing.gear.gloves].hp +
-             items[thing.gear.chest].hp
+        items[thing.gear.legs].hp +
+        items[thing.gear.gloves].hp +
+        items[thing.gear.chest].hp
     return hp
 }
 
@@ -209,7 +209,7 @@ app.post('/api/upItem', (req,res)=>
             User.findByIdAndUpdate(user._id, {gold:meka.canUpgrade(user.gold, item).gold},(doc)=>{
                 var string = 'gear.' + req.body.piece
                 var miniQuery = {}
-                miniQuery[string] = newItem 
+                miniQuery[string] = newItem
                 var query = {}
                 query["$set"] = miniQuery
                 User.findByIdAndUpdate(user._id, query,(doc)=>{
@@ -230,12 +230,12 @@ function getUserTasks(user_id, callback) {
     Task.find({"owner": 0 }, function(err, available_tasks) {
         Task.find({"owner": user_id }, function(err, current_tasks) {
             Task.find({"doneBy": user_id }, function(err, done_tasks) {
-            var tasks = {
-                'available': available_tasks,
-                'current':   current_tasks,
-                'done':      done_tasks
-            };
-            callback(tasks);
+                var tasks = {
+                    'available': available_tasks,
+                    'current':   current_tasks,
+                    'done':      done_tasks
+                };
+                callback(tasks);
             });
         });
     });
@@ -290,6 +290,35 @@ function sync(req,callback)
             req.session.save(()=> callback())
         })
 }
+
+app.get('/duel/:id',ensure ,(req,res)=>
+    {
+        User.findById(req.params.id, (err,doc)=>
+            {
+                if(err)
+                    throw err
+                var user = req.session.user
+                var nUser = 
+                    {
+                        name:user.name, 
+                        xp : user.xp,
+                        dmg : getDamage(user), 
+                        hp : getHp(user),
+                        gear : user.gear
+                        
+                    }
+                var enemy = 
+                    {
+                        name:doc.name, 
+                        xp : doc.xp,
+                        dmg : doc.dmg(),
+                        hp : doc.hp(),
+                        gear : doc.gear
+                    }
+                var string = nUser.dmg + enemy.dmg
+                res.send(string)
+            })
+    })
 
 app.get('/login', (req, res)=>
     {
