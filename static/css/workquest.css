@@ -24,6 +24,24 @@ img {
 
 .user-stats img {
   width: 100%; }
+.user-stats #gear {
+  margin-bottom: 1em; }
+  .user-stats #gear .item {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    text-align: center;
+    margin-right: 0.8em; }
+    .user-stats #gear .item .upgrade-button {
+      background-color: #66CC99;
+      cursor: pointer;
+      margin-top: 0.2em;
+      border: 0.2em solid #66CC99;
+      border-radius: 0.2em;
+      width: 100%; }
+      .user-stats #gear .item .upgrade-button:hover {
+        background-color: #2ECC71;
+        border: 0.2em solid #2ECC71; }
 .user-stats .xp-progress-text {
   width: 100%;
   text-align: center; }

@@ -7,8 +7,8 @@ function levelUp (exp){
 }
 
 function upgrade (item) {
-    var tier = getItem(item).tier + 1;
-    var type = getItem(item).type;
+    var tier = items[ item ].tier + 1;
+    var type = items[ item ].type;
     var tmp = null;
     items.forEach((item)=> {
         if (item.type == type && item.tier == tier){
@@ -22,12 +22,13 @@ function upgrade (item) {
 }
 
 function canUpgrade (gold, item){
-    var needToPay = getItem(item).cost;
+    var needToPay = items[item].cost;
     if (gold >= needToPay) {
         var newItem = upgrade(item);
         gold -= needToPay;
         console.log("Item has been upgraded\n");
     }else{
+        gold -= needToPay;
         console.log("Not enough gold to upgrade desired item!\n");
     }
     return{gold:gold, item:newItem};

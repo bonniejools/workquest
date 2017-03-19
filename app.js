@@ -46,6 +46,19 @@ userSchema.methods.hp = function()
              items[this.gear.chest].hp
     return hp
 }
+function getDamage(thing){
+    var dmg = items[thing.gear.weapon].damage
+    return dmg 
+}
+function getHp(thing)
+{
+    var hp = items[thing.gear.helmet].hp +
+             items[thing.gear.legs].hp +
+             items[thing.gear.gloves].hp +
+             items[thing.gear.chest].hp
+    return hp
+}
+
 
 function levelClass(level) {
     if (level < 5) {
@@ -102,15 +115,12 @@ taskSchema.methods.status = function() {
 var Task = mongoose.model('task', taskSchema);
 var User = mongoose.model('user', userSchema);
 
-// app.get('/view/',(req,res)=>{
-//     User.find({},(err,users)=>
-//         {
-//             if(err)
-//                 throw err
-//             res.send(users)
-//         })
-// })
 // API stuff
+app.get('/api/me', ensure,(req,res)=>
+    {
+        var user = req.session.user
+        res.send(user)
+    })
 app.post('/api/add', (req,res)=>
     {
         if (!req.body.name)
@@ -187,6 +197,32 @@ app.post('/api/delete/', (req,res)=>
             res.send('Task id: ' + tId + ' removed')
         })
     })
+app.post('/api/upItem', (req,res)=>
+    {
+        var user = req.session.user
+        var item = user.gear[req.body.piece]
+        console.log(item)
+        var newItem = items.indexOf(meka.canUpgrade(user.gold,item).item)
+        console.log(newItem)
+        if(meka.canUpgrade(user.gold, item).gold > 0)
+        {
+            User.findByIdAndUpdate(user._id, {gold:meka.canUpgrade(user.gold, item).gold},(doc)=>{
+                var string = 'gear.' + req.body.piece
+                var miniQuery = {}
+                miniQuery[string] = newItem 
+                var query = {}
+                query["$set"] = miniQuery
+                User.findByIdAndUpdate(user._id, query,(doc)=>{
+                    res.send("Item upgraded")
+                })
+            })
+        }
+        else
+        {
+            res.send("failed")
+        }
+
+    })
 
 // Return an object returning three lists of tasks for the user
 // (available, current and finished)
@@ -211,7 +247,7 @@ app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
     User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
         getUserTasks(sesh.user._id, (tasks) => {
-            res.render('profile',{tasks: tasks, user:sesh.user})
+            res.render('profile',{tasks: tasks, user:sesh.user, items: items})
         });
     })
 })
