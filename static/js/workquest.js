@@ -7,8 +7,11 @@ $( function() {
                   console.log("Task number " + task_id + " moved to " + moved_list);
 
                   if (moved_list = "current") {
-                      $.post( '/api/take',
-                              {'tId': task_id},
+                      $.post( '/api/take/', {'tId': task_id},
+                              (data) => console.log(data))
+                  }
+                  if (moved_list = "complete") {
+                      $.post( '/api/complete/', {'tId': task_id},
                               (data) => console.log(data))
                   }
               }
