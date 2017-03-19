@@ -159,3 +159,64 @@ function runAjaxUpdate() {
 
 }
 
+function generateDataset(length) {
+    var arr = Array();
+    var cumulative = 0;
+    for (var i=0; i<length; i++) {
+        arr.push(cumulative);
+        cumulative += Math.random() * 1200;
+    }
+
+    console.log(arr);
+    return arr;
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+var exampleDataset = function(name) {
+    var c = getRandomColor();
+    return {
+        label: name,
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: c,
+        borderColor: c,
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "rgba(75,192,192,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: c,
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: generateDataset(7),//[65, 59, 80, 81, 56, 55, 40],
+        spanGaps: false,
+    }
+}
+// ChartJS
+var users = Array();
+$("#productivePlayers td:nth-child(2)").each(function() { users.push($(this).text()) });
+console.log(users);
+
+var ctx = $("#productivityChart");
+var data = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: users.map((x)=>exampleDataset(x))
+}
+
+var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: data
+});
