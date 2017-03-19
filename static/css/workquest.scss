@@ -80,7 +80,7 @@ img {
 
     #stats {
         .stat {
-            width: 4.5em;
+            width: 8em;
             display: inline-block;
             padding-right: 0.5em;
 
@@ -91,7 +91,8 @@ img {
             }
 
             span {
-                float: right;
+                float: left;
+                margin-left: 0.5em;
                 line-height: 2em;
                 font-size: 1.5em;
             }
