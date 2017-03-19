@@ -50,3 +50,15 @@ $(".taskDelete").click( function() {
     $(this).parent().parent().remove();
 });
 
+function upHelmet()
+{
+    $.ajax({
+        type: "POST",
+        url: '/api/upItem',
+        data: {
+            'piece': 'legs'
+        },
+        success: (data, status, jqXHR) => {console.log(data); location.reload()}
+    });
+
+}
