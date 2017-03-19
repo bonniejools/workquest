@@ -95,6 +95,15 @@ app.post('/api/take/', (req,res)=>
             res.send('Task ' + doc.name + ' taken by ' + user.id )
         })
     })
+app.post('/api/delete/', (req,res)=>
+    {
+        var tId = req.body.tId
+        Task.remove({_id:tId}, (err,doc)=>{
+            if (err)
+                throw err
+            res.send('Task id: ' + tId + ' removed')
+        })
+    })
 
 // End of api stuff
 // User pages
@@ -126,10 +135,23 @@ function ensure(req,res,next)
 {
     var err = "User is not logged wtf"
     if(req.session.logged == true)
-        next()
+        sync(req,()=> next())
     else
         res.redirect("/")
     // throw err
+}
+function sync(req,callback)
+{
+    var mail = req.session.user.mail
+    User.findOne({mail:mail},(err,doc)=>
+        {
+            if(err)
+            {
+                throw err
+            }
+            req.session.user = doc
+            req.session.save(()=> callback())
+        })
 }
 
 app.get('/login', (req, res)=>
