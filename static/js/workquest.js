@@ -23,7 +23,7 @@ $("#newTaskForm").submit((e) => {
             'hours': data[1].value,
             'priority': data[2].value
         },
-        success: (data, status, jqXHR) => {console.log(data)}
+        success: (data, status, jqXHR) => {console.log(data); location.reload()}
     });
 
     // Validation is performed by html5
