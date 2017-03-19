@@ -89,22 +89,36 @@ app.post('/api/complete/', (req,res)=>
         Task.findByIdAndUpdate(tId, {owner:1,doneBy:user._id},(err,doc)=>{
             if (err)
                 throw err
-            var xp = doc.xp
-            var gold = doc.gold
-            res.send('Task ' + doc.name + ' completed by ' + user._id)
+            var xp = doc.xp + user.xp
+            var gold = doc.gold + user.gold
+
+            User.findByIdAndUpdate(user._id,{gold:gold,xp:xp},(doc2)=>
+                {
+                    res.send('Task ' + doc.name + ' completed by ' + user.name)
+                })
         })
 
     })
 app.post('/api/take/', (req,res)=>
     {
         var user = req.session.user
-        console.log(user);
         var tId = req.body.tId
         Task.findByIdAndUpdate(tId, {owner:user._id},(err,doc)=>{
             if (err)
                 throw err
             console.log(doc);
-            res.send('Task ' + doc.name + ' taken by ' + user._id )
+            res.send('Task ' + doc.name + ' taken by ' + user.name )
+        })
+    })
+app.post('/api/release/', (req,res)=>
+    {
+        var user = req.session.user
+        var tId = req.body.tId
+        Task.findByIdAndUpdate(tId, {owner:0},(err,doc)=>{
+            if (err)
+                throw err
+            console.log(doc);
+            res.send('Task ' + doc.name + ' released by ' + user.name )
         })
     })
 app.post('/api/delete/', (req,res)=>
