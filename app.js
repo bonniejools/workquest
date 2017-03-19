@@ -34,6 +34,7 @@ var userSchema = mongoose.Schema(
             weapon:Number
         }
     })
+
 userSchema.methods.dmg = function()
 {
     var dmg = items[this.gear.weapon].damage
@@ -119,9 +120,24 @@ var User = mongoose.model('user', userSchema);
 // API stuff
 app.get('/api/me', ensure,(req,res)=>
     {
-        var user = req.session.user
-        res.send(user)
+        User.findOne({_id:req.session.user._id}, (err,user) => {
+            var ret = {
+                '_id': user._id,
+                'dmg': user.dmg(),
+                'hp': user.hp(),
+                'mail': user.mail,
+                'name': user.name,
+                'xp': user.xp,
+                'gold': user.gold,
+                'type': user.type,
+                'gear': user.gear,
+                'level': user.level()
+            }
+
+            res.send(ret)
+        });
     })
+
 app.post('/api/add', (req,res)=>
     {
         if (!req.body.name)
@@ -246,9 +262,9 @@ function getUserTasks(user_id, callback) {
 // User pages
 app.get('/me', ensure ,(req,res)=>{
     var sesh = req.session
-    User.findOne({mail:sesh.user.mail}, (err,tmpUser) => {
-        getUserTasks(sesh.user._id, (tasks) => {
-            res.render('profile',{tasks: tasks, user:sesh.user, items: items})
+    User.findOne({_id:sesh.user._id}, (err,user) => {
+        getUserTasks(user._id, (tasks) => {
+            res.render('profile',{tasks: tasks, user:user, items: items})
         });
     })
 })
