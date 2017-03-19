@@ -100,6 +100,7 @@ img {
         .xp-current-progress {
             height: 0.7em;
             background-color: $flat-darkgreen;
+            transition-duration: 0.5s;
         }
     }
 

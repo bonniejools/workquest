@@ -139,6 +139,8 @@ function runAjaxUpdate() {
         $(".level").text(data.level);
         $(".xp-progress-text").text((data.xp % 100) + " / 100xp");
 
+        $(".xp-current-progress").css("width", String(data.xp % 100) + "%");
+
         // Update gear
         var helmet = $("#helmet");
         helmet.find("img").attr('src', "/assets/" + data.gear.helmet.src);
